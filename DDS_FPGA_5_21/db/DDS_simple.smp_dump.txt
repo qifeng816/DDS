@@ -1,0 +1,13 @@
+
+State Machine - |DDS_simple|seg_display:u_seg_display|state
+Name state.000 state.010 state.001 
+state.000 0 0 0 
+state.001 1 0 1 
+state.010 1 1 0 
+
+State Machine - |DDS_simple|MCU_uart:u_mcu_uart|state
+Name state.S_STOP state.S_DATA state.S_START state.S_IDLE 
+state.S_IDLE 0 0 0 0 
+state.S_START 0 0 1 1 
+state.S_DATA 0 1 0 1 
+state.S_STOP 1 0 0 1 
