@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE6F17) Path("C:/Users/zheng/Desktop/DDS_5_23/DDS_FPGA/output_files/") File("DDS_simple.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE6F17) Path("D:/GithubDDS/DDS_FPGA/output_files/") File("DDS_simple.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

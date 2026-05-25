@@ -60,6 +60,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "baseband_out",
+					"strict" : false
+				},
+				{
+					"name" : "pwm_out",
+					"strict" : false
+				},
+				{
 					"name" : "seg[0]",
 					"strict" : false
 				},
@@ -116,7 +124,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "sw_ask",
+					"strict" : false
+				},
+				{
+					"name" : "sw_psk",
+					"strict" : false
+				},
+				{
 					"name" : "switch",
+					"strict" : false
+				},
+				{
+					"name" : "sw_liss",
 					"strict" : false
 				},
 				{
