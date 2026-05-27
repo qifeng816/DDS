@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DDS_simple
-Mon May 25 22:32:44 2026
+Tue May 26 20:07:38 2026
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
 
 
@@ -81,15 +81,15 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon May 25 22:32:44 2026           ;
+; Analysis & Synthesis Status        ; Successful - Tue May 26 20:07:38 2026           ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Standard Edition ;
 ; Revision Name                      ; DDS_simple                                      ;
 ; Top-level Entity Name              ; DDS_simple                                      ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 2,101                                           ;
-;     Total combinational functions  ; 1,924                                           ;
-;     Dedicated logic registers      ; 540                                             ;
-; Total registers                    ; 540                                             ;
+; Total logic elements               ; 2,107                                           ;
+;     Total combinational functions  ; 1,929                                           ;
+;     Dedicated logic registers      ; 543                                             ;
+; Total registers                    ; 543                                             ;
 ; Total pins                         ; 40                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 21,504                                          ;
@@ -197,14 +197,15 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processor 2            ;   0.1%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
 ;     Processor 7            ;   0.0%      ;
 ;     Processor 8            ;   0.0%      ;
-;     Processors 9-10        ;   0.0%      ;
+;     Processor 9            ;   0.0%      ;
+;     Processor 10           ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -274,20 +275,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 2,101     ;
+; Estimated Total logic elements              ; 2,107     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1924      ;
+; Total combinational functions               ; 1929      ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 471       ;
-;     -- 3 input functions                    ; 655       ;
-;     -- <=2 input functions                  ; 798       ;
+;     -- 3 input functions                    ; 669       ;
+;     -- <=2 input functions                  ; 789       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
 ;     -- normal mode                          ; 1135      ;
-;     -- arithmetic mode                      ; 789       ;
+;     -- arithmetic mode                      ; 794       ;
 ;                                             ;           ;
-; Total registers                             ; 540       ;
-;     -- Dedicated logic registers            ; 540       ;
+; Total registers                             ; 543       ;
+;     -- Dedicated logic registers            ; 543       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 40        ;
@@ -299,8 +300,8 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 625       ;
-; Total fan-out                               ; 8260      ;
+; Maximum fan-out                             ; 628       ;
+; Total fan-out                               ; 8289      ;
 ; Average fan-out                             ; 3.12      ;
 +---------------------------------------------+-----------+
 
@@ -310,7 +311,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                   ; Entity Name         ; Library Name ;
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |DDS_simple                                 ; 1924 (480)          ; 540 (294)                 ; 21504       ; 16           ; 0       ; 8         ; 40   ; 0            ; |DDS_simple                                                                                                                           ; DDS_simple          ; work         ;
+; |DDS_simple                                 ; 1929 (480)          ; 543 (294)                 ; 21504       ; 16           ; 0       ; 8         ; 40   ; 0            ; |DDS_simple                                                                                                                           ; DDS_simple          ; work         ;
 ;    |MCU_uart:u_mcu_uart|                    ; 140 (140)           ; 106 (106)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|MCU_uart:u_mcu_uart                                                                                                       ; MCU_uart            ; work         ;
 ;    |dac904_pll:u_pll|                       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|dac904_pll:u_pll                                                                                                          ; dac904_pll          ; work         ;
 ;       |altpll:altpll_component|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|dac904_pll:u_pll|altpll:altpll_component                                                                                  ; altpll              ; work         ;
@@ -366,7 +367,7 @@ refer to the applicable agreement for further details.
 ;    |sine_14bit_256:u_rom_psk|               ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_psk                                                                                                  ; sine_14bit_256      ; work         ;
 ;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_psk|altsyncram:altsyncram_component                                                                  ; altsyncram          ; work         ;
 ;          |altsyncram_rq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_psk|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated                                   ; altsyncram_rq91     ; work         ;
-;    |sintopwm:u_pwm_inst|                    ; 27 (27)             ; 14 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sintopwm:u_pwm_inst                                                                                                       ; sintopwm            ; work         ;
+;    |sintopwm:u_pwm_inst|                    ; 32 (32)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sintopwm:u_pwm_inst                                                                                                       ; sintopwm            ; work         ;
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -443,48 +444,47 @@ Encoding Type:  One-Hot
 +---------------+--------------+--------------+---------------+--------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                          ;
-+-----------------------------------------------------------------------------------------+---------------------------------------------------+
-; Register name                                                                           ; Reason for Removal                                ;
-+-----------------------------------------------------------------------------------------+---------------------------------------------------+
-; dac904_pll:u_pll|altpll:altpll_component|dac904_pll_altpll:auto_generated|pll_lock_sync ; Stuck at VCC due to stuck port data_in            ;
-; seg_display:u_seg_display|z_reg[3]                                                      ; Stuck at GND due to stuck port data_in            ;
-; seg_display:u_seg_display|base[0,1,11,21,22,24..31]                                     ; Stuck at GND due to stuck port data_in            ;
-; seg_display:u_seg_display|z_show[3]                                                     ; Stuck at GND due to stuck port data_in            ;
-; baseband_reg                                                                            ; Merged with bb_shift_reg[0]                       ;
-; seg_display:u_seg_display|base[20,23]                                                   ; Merged with seg_display:u_seg_display|base[12]    ;
-; seg_display:u_seg_display|base[17,18]                                                   ; Merged with seg_display:u_seg_display|base[14]    ;
-; seg_display:u_seg_display|base[4]                                                       ; Merged with seg_display:u_seg_display|base[13]    ;
-; seg_display:u_seg_display|z_reg[0]                                                      ; Merged with seg_display:u_seg_display|base[7]     ;
-; dds_freq_ctrlword:u_freq_ctrlword|ctrl_reg[0]                                           ; Stuck at GND due to stuck port data_in            ;
-; phase[0]                                                                                ; Stuck at GND due to stuck port data_in            ;
-; phase_1k[0]                                                                             ; Merged with digital_mod_phase[0]                  ;
-; phase_2k[1]                                                                             ; Merged with digital_mod_phase[0]                  ;
-; mod_phase[4]                                                                            ; Merged with digital_mod_phase[0]                  ;
-; sintopwm:u_pwm_inst|cnt[0]                                                              ; Merged with seg_display:u_seg_display|scan_cnt[0] ;
-; mod_phase[5]                                                                            ; Merged with digital_mod_phase[1]                  ;
-; phase_1k[1]                                                                             ; Merged with digital_mod_phase[1]                  ;
-; phase_2k[2]                                                                             ; Merged with digital_mod_phase[1]                  ;
-; phase_2k[3]                                                                             ; Merged with phase_1k[2]                           ;
-; mod_phase[6]                                                                            ; Merged with digital_mod_phase[2]                  ;
-; phase_2k[4]                                                                             ; Merged with phase_1k[3]                           ;
-; mod_phase[7]                                                                            ; Merged with digital_mod_phase[3]                  ;
-; phase_2k[5]                                                                             ; Merged with phase_1k[4]                           ;
-; phase_2k[6]                                                                             ; Merged with phase_1k[5]                           ;
-; phase_2k[7]                                                                             ; Merged with phase_1k[6]                           ;
-; phase_2k[8]                                                                             ; Merged with phase_1k[7]                           ;
-; phase_2k[9]                                                                             ; Merged with phase_1k[8]                           ;
-; phase_2k[10]                                                                            ; Merged with phase_1k[9]                           ;
-; phase_2k[11]                                                                            ; Merged with phase_1k[10]                          ;
-; phase_2k[12]                                                                            ; Merged with phase_1k[11]                          ;
-; phase_2k[13]                                                                            ; Merged with phase_1k[12]                          ;
-; phase_2k[14]                                                                            ; Merged with phase_1k[13]                          ;
-; seg_display:u_seg_display|state~9                                                       ; Lost fanout                                       ;
-; MCU_uart:u_mcu_uart|state~8                                                             ; Lost fanout                                       ;
-; MCU_uart:u_mcu_uart|state~9                                                             ; Lost fanout                                       ;
-; Total Number of Removed Registers = 49                                                  ;                                                   ;
-+-----------------------------------------------------------------------------------------+---------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                       ;
++-----------------------------------------------------------------------------------------+------------------------------------------------+
+; Register name                                                                           ; Reason for Removal                             ;
++-----------------------------------------------------------------------------------------+------------------------------------------------+
+; dac904_pll:u_pll|altpll:altpll_component|dac904_pll_altpll:auto_generated|pll_lock_sync ; Stuck at VCC due to stuck port data_in         ;
+; seg_display:u_seg_display|z_reg[3]                                                      ; Stuck at GND due to stuck port data_in         ;
+; seg_display:u_seg_display|base[0,1,11,21,22,24..31]                                     ; Stuck at GND due to stuck port data_in         ;
+; seg_display:u_seg_display|z_show[3]                                                     ; Stuck at GND due to stuck port data_in         ;
+; baseband_reg                                                                            ; Merged with bb_shift_reg[0]                    ;
+; seg_display:u_seg_display|base[20,23]                                                   ; Merged with seg_display:u_seg_display|base[12] ;
+; seg_display:u_seg_display|base[17,18]                                                   ; Merged with seg_display:u_seg_display|base[14] ;
+; seg_display:u_seg_display|base[4]                                                       ; Merged with seg_display:u_seg_display|base[13] ;
+; seg_display:u_seg_display|z_reg[0]                                                      ; Merged with seg_display:u_seg_display|base[7]  ;
+; dds_freq_ctrlword:u_freq_ctrlword|ctrl_reg[0]                                           ; Stuck at GND due to stuck port data_in         ;
+; phase[0]                                                                                ; Stuck at GND due to stuck port data_in         ;
+; phase_1k[0]                                                                             ; Merged with digital_mod_phase[0]               ;
+; phase_2k[1]                                                                             ; Merged with digital_mod_phase[0]               ;
+; mod_phase[4]                                                                            ; Merged with digital_mod_phase[0]               ;
+; mod_phase[5]                                                                            ; Merged with digital_mod_phase[1]               ;
+; phase_1k[1]                                                                             ; Merged with digital_mod_phase[1]               ;
+; phase_2k[2]                                                                             ; Merged with digital_mod_phase[1]               ;
+; phase_2k[3]                                                                             ; Merged with phase_1k[2]                        ;
+; mod_phase[6]                                                                            ; Merged with digital_mod_phase[2]               ;
+; phase_2k[4]                                                                             ; Merged with phase_1k[3]                        ;
+; mod_phase[7]                                                                            ; Merged with digital_mod_phase[3]               ;
+; phase_2k[5]                                                                             ; Merged with phase_1k[4]                        ;
+; phase_2k[6]                                                                             ; Merged with phase_1k[5]                        ;
+; phase_2k[7]                                                                             ; Merged with phase_1k[6]                        ;
+; phase_2k[8]                                                                             ; Merged with phase_1k[7]                        ;
+; phase_2k[9]                                                                             ; Merged with phase_1k[8]                        ;
+; phase_2k[10]                                                                            ; Merged with phase_1k[9]                        ;
+; phase_2k[11]                                                                            ; Merged with phase_1k[10]                       ;
+; phase_2k[12]                                                                            ; Merged with phase_1k[11]                       ;
+; phase_2k[13]                                                                            ; Merged with phase_1k[12]                       ;
+; phase_2k[14]                                                                            ; Merged with phase_1k[13]                       ;
+; seg_display:u_seg_display|state~9                                                       ; Lost fanout                                    ;
+; MCU_uart:u_mcu_uart|state~8                                                             ; Lost fanout                                    ;
+; MCU_uart:u_mcu_uart|state~9                                                             ; Lost fanout                                    ;
+; Total Number of Removed Registers = 48                                                  ;                                                ;
++-----------------------------------------------------------------------------------------+------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------+
@@ -502,7 +502,7 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 540   ;
+; Total registers                              ; 543   ;
 ; Number of registers using Synchronous Clear  ; 61    ;
 ; Number of registers using Synchronous Load   ; 32    ;
 ; Number of registers using Asynchronous Clear ; 451   ;
@@ -559,19 +559,19 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|mode_sel[2]      ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|idx_cnt[1]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|z_reg[2]   ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|freq_temp[14]    ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|base[3]    ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|base[16]   ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|freq_temp[8]     ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|base[9]    ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|temp_f[1]  ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|bit_cnt[0]       ;
-; 5:1                ; 30 bits   ; 90 LEs        ; 60 LEs               ; 30 LEs                 ; Yes        ; |DDS_simple|seg_display:u_seg_display|temp_f[25] ;
-; 7:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|baud_cnt[8]      ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|bit_cnt[3]       ;
+; 5:1                ; 30 bits   ; 90 LEs        ; 60 LEs               ; 30 LEs                 ; Yes        ; |DDS_simple|seg_display:u_seg_display|temp_f[28] ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|baud_cnt[15]     ;
 ; 9:1                ; 26 bits   ; 156 LEs       ; 52 LEs               ; 104 LEs                ; No         ; |DDS_simple|display_freq                         ;
-; 15:1               ; 6 bits    ; 60 LEs        ; 54 LEs               ; 6 LEs                  ; No         ; |DDS_simple|seg_display:u_seg_display|Mux1       ;
+; 15:1               ; 6 bits    ; 60 LEs        ; 54 LEs               ; 6 LEs                  ; No         ; |DDS_simple|seg_display:u_seg_display|Mux0       ;
 ; 8:1                ; 14 bits   ; 70 LEs        ; 56 LEs               ; 14 LEs                 ; No         ; |DDS_simple|dac_comb                             ;
-; 12:1               ; 6 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |DDS_simple|display_freq[15]                     ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector1        ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector2        ;
+; 12:1               ; 6 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |DDS_simple|display_freq[16]                     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector3        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector0        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 
 
@@ -1862,23 +1862,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 40                          ;
-; cycloneiii_ff         ; 540                         ;
+; cycloneiii_ff         ; 543                         ;
 ;     CLR               ; 187                         ;
 ;     CLR SCLR          ; 14                          ;
 ;     ENA               ; 26                          ;
 ;     ENA CLR           ; 203                         ;
 ;     ENA CLR SCLR      ; 47                          ;
 ;     ENA SLD           ; 32                          ;
-;     plain             ; 31                          ;
-; cycloneiii_lcell_comb ; 1933                        ;
-;     arith             ; 789                         ;
+;     plain             ; 34                          ;
+; cycloneiii_lcell_comb ; 1938                        ;
+;     arith             ; 794                         ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 326                         ;
-;         3 data inputs ; 458                         ;
+;         2 data inputs ; 317                         ;
+;         3 data inputs ; 472                         ;
 ;     normal            ; 1144                        ;
 ;         0 data inputs ; 51                          ;
-;         1 data inputs ; 67                          ;
-;         2 data inputs ; 358                         ;
+;         1 data inputs ; 68                          ;
+;         2 data inputs ; 357                         ;
 ;         3 data inputs ; 197                         ;
 ;         4 data inputs ; 471                         ;
 ; cycloneiii_mac_mult   ; 8                           ;
@@ -1887,7 +1887,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; cycloneiii_ram_block  ; 84                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 65.80                       ;
-; Average LUT depth     ; 21.08                       ;
+; Average LUT depth     ; 20.99                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1896,7 +1896,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:09     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -1906,7 +1906,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
-    Info: Processing started: Mon May 25 22:32:20 2026
+    Info: Processing started: Tue May 26 20:07:13 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DDS_simple -c DDS_simple
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
@@ -2178,17 +2178,17 @@ Info (17016): Found the following redundant logic cells in design
     Info (17048): Logic cell "lpm_divide:Div0|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider|alt_u_div_d7f:divider|add_sub_14_result_int[1]~16" File: D:/GithubDDS/DDS_FPGA/db/alt_u_div_d7f.tdf Line: 56
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2251 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2257 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 7 input pins
     Info (21059): Implemented 33 output pins
-    Info (21061): Implemented 2110 logic cells
+    Info (21061): Implemented 2116 logic cells
     Info (21064): Implemented 84 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 16 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 4881 megabytes
-    Info: Processing ended: Mon May 25 22:32:44 2026
-    Info: Elapsed time: 00:00:24
-    Info: Total CPU time (on all processors): 00:00:37
+    Info: Peak virtual memory: 4886 megabytes
+    Info: Processing ended: Tue May 26 20:07:38 2026
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:29
 
 
