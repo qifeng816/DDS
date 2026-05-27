@@ -1,5 +1,5 @@
 Flow report for DDS_simple
-Tue May 26 20:08:37 2026
+Wed May 27 22:47:27 2026
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
 
 
@@ -40,20 +40,20 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Tue May 26 20:08:37 2026           ;
+; Flow Status                        ; Successful - Wed May 27 22:47:27 2026           ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Standard Edition ;
 ; Revision Name                      ; DDS_simple                                      ;
 ; Top-level Entity Name              ; DDS_simple                                      ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE6F17C8                                     ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 1,991 / 6,272 ( 32 % )                          ;
-;     Total combinational functions  ; 1,929 / 6,272 ( 31 % )                          ;
-;     Dedicated logic registers      ; 529 / 6,272 ( 8 % )                             ;
-; Total registers                    ; 529                                             ;
-; Total pins                         ; 40 / 180 ( 22 % )                               ;
+; Total logic elements               ; 1,979 / 6,272 ( 32 % )                          ;
+;     Total combinational functions  ; 1,899 / 6,272 ( 30 % )                          ;
+;     Dedicated logic registers      ; 482 / 6,272 ( 8 % )                             ;
+; Total registers                    ; 482                                             ;
+; Total pins                         ; 41 / 180 ( 23 % )                               ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 21,504 / 276,480 ( 8 % )                        ;
+; Total memory bits                  ; 17,464 / 276,480 ( 6 % )                        ;
 ; Embedded Multiplier 9-bit elements ; 16 / 30 ( 53 % )                                ;
 ; Total PLLs                         ; 1 / 2 ( 50 % )                                  ;
 +------------------------------------+-------------------------------------------------+
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/26/2026 20:07:14 ;
+; Start date & time ; 05/27/2026 22:46:36 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DDS_simple          ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 40139811395213.177979723406288         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 40139811395213.177989319606888         ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim (Verilog)                     ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
@@ -100,12 +100,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:23     ; 1.0                     ; 4886 MB             ; 00:00:27                           ;
-; Fitter               ; 00:00:34     ; 1.2                     ; 6001 MB             ; 00:00:40                           ;
-; Assembler            ; 00:00:05     ; 1.0                     ; 4685 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:05     ; 1.6                     ; 4857 MB             ; 00:00:04                           ;
-; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4680 MB             ; 00:00:02                           ;
-; Total                ; 00:01:09     ; --                      ; --                  ; 00:01:15                           ;
+; Analysis & Synthesis ; 00:00:22     ; 1.0                     ; 4888 MB             ; 00:00:35                           ;
+; Fitter               ; 00:00:16     ; 1.2                     ; 6004 MB             ; 00:00:31                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4688 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.6                     ; 4858 MB             ; 00:00:05                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4675 MB             ; 00:00:02                           ;
+; Total                ; 00:00:45     ; --                      ; --                  ; 00:01:14                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

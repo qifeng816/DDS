@@ -64,10 +64,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "pwm_out",
-					"strict" : false
-				},
-				{
 					"name" : "seg[0]",
 					"strict" : false
 				},
@@ -124,6 +120,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "pwm_out",
+					"strict" : false
+				},
+				{
 					"name" : "sw_ask",
 					"strict" : false
 				},
@@ -132,11 +132,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "switch",
+					"name" : "sw_liss",
 					"strict" : false
 				},
 				{
-					"name" : "sw_liss",
+					"name" : "sw_change_a",
+					"strict" : false
+				},
+				{
+					"name" : "switch",
 					"strict" : false
 				},
 				{
