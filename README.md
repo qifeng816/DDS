@@ -56,7 +56,7 @@ DDS/
   - 当前实现：`freq_ctrl_word = freq_target * 86`（对应 50 MHz 时钟下的近似系数）。
 - 相位高位作为 ROM 地址，输出 14 位波形数据送 DAC。
 
-### English
+### 英文
 - The FPGA uses a phase accumulator plus sine ROM (`sine_14bit_256`) for DDS generation.
 - Target frequency `freq_target` is converted into `freq_ctrl_word`:
   - Current implementation: `freq_ctrl_word = freq_target * 86` (approximation for a 50 MHz clock).
@@ -295,3 +295,8 @@ DDS/
 
 ### English
 - Some third-party/generated directories include their own copyright and license notices; follow those respective licenses.
+
+## 贡献
+<a href="https://github.com/shantu246/DDS/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=shantu246/DDS" />
+</a>
