@@ -56,7 +56,7 @@ DDS/
   - 当前实现：`freq_ctrl_word = freq_target * 86`（对应 50 MHz 时钟下的近似系数）。
 - 相位高位作为 ROM 地址，输出 14 位波形数据送 DAC。
 
-### English
+### 英文
 - The FPGA uses a phase accumulator plus sine ROM (`sine_14bit_256`) for DDS generation.
 - Target frequency `freq_target` is converted into `freq_ctrl_word`:
   - Current implementation: `freq_ctrl_word = freq_target * 86` (approximation for a 50 MHz clock).
@@ -234,7 +234,39 @@ DDS/
 
 ---
 
-## 8. 后续优化建议 | Future Recommendations
+## 8. 最近更新要点 | Recent Update Highlights
+
+### 中文
+1. **Sine 模式发送链路修复**
+   - 模式 A 下支持先输入数字再选择单位（A=Hz / B=kHz / C=MHz）后发送到 FPGA。
+   - 使用 `*` / `#` 做 100 Hz 步进微调时，会自动按 Hz 显示并立即发送最新频率。
+2. **AM 参数下发与显示修复**
+   - 进入模式 B 时，MCU 默认参数为 `Fc=1.0 MHz`、`ma=10%`，并立即同步到 FPGA。
+   - MCU 侧通过“模式字符 + 双参数”顺序下发（`B` + `Fc` + `ma`），避免参数索引错位。
+3. **FM 参数下发与显示修复**
+   - 进入模式 C 时，默认 `Fc=100 kHz`、`Dev=5 kHz`，并立即同步到 FPGA。
+   - `*` 键可在 `5 kHz / 10 kHz` 频偏间切换并实时下发。
+4. **FPGA 显示与李萨如模式修复**
+   - FM 模式下数码管显示区域会显示 `fm_dev / 1000`（kHz 量级），便于直接观察频偏设置。
+   - 李萨如模式新增独立 1 kHz / 2 kHz 相位累加路径，保证 DAC 与 PWM 双通道输出稳定。
+
+### English
+1. **Sine mode transmission path fixed**
+   - In Mode A, users can input digits first, then choose unit (A=Hz / B=kHz / C=MHz) before transmission.
+   - Fine tuning with `*` / `#` (100 Hz step) now switches display to Hz and sends the latest frequency immediately.
+2. **AM parameter transfer and display fixed**
+   - Entering Mode B initializes MCU defaults to `Fc=1.0 MHz`, `ma=10%`, and syncs them to FPGA immediately.
+   - MCU now sends AM as an ordered sequence (`B` + `Fc` + `ma`) to keep FPGA parameter indexing aligned.
+3. **FM parameter transfer and display fixed**
+   - Entering Mode C initializes `Fc=100 kHz`, `Dev=5 kHz`, then synchronizes immediately.
+   - `*` toggles deviation between `5 kHz` and `10 kHz` and pushes the update in real time.
+4. **FPGA display and Lissajous mode fixed**
+   - In FM mode, seven-segment display now shows `fm_dev / 1000` (kHz-scale) for direct deviation observation.
+   - Lissajous mode uses dedicated 1 kHz / 2 kHz phase accumulators for stable DAC + PWM dual-channel output.
+
+---
+
+## 9. 后续优化建议 | Future Recommendations
 
 ### 中文
 1. **统一模式控制入口**：将硬件开关模式与 MCU 菜单模式进行统一管理，避免状态冲突。  
@@ -256,10 +288,15 @@ DDS/
 
 ---
 
-## 9. 许可与说明 | License & Notes
+## 10. 许可与说明 | License & Notes
 
 ### 中文
 - 仓库中部分第三方目录和生成文件包含原始版权声明，请按各自许可证使用。  
 
 ### English
 - Some third-party/generated directories include their own copyright and license notices; follow those respective licenses.
+
+## 贡献
+<a href="https://github.com/shantu246/DDS/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=shantu246/DDS" />
+</a>
