@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DDS_simple
-Wed May 27 22:46:59 2026
+Thu May 28 22:40:40 2026
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
 
 
@@ -41,23 +41,24 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
  33. Parameter Settings for User Entity Instance: sine_14bit_256:u_rom_mod|altsyncram:altsyncram_component
  34. Parameter Settings for User Entity Instance: dac904_pll:u_pll|altpll:altpll_component
  35. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult2
- 36. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 36. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
  37. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult3
- 38. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Mod0
- 39. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Div0
- 40. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Mod1
- 41. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1
- 42. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Div1
- 43. Parameter Settings for Inferred Entity Instance: dds_freq_ctrlword:u_freq_ctrlword|lpm_mult:Mult0
- 44. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
- 45. altsyncram Parameter Settings by Entity Instance
- 46. altpll Parameter Settings by Entity Instance
- 47. lpm_mult Parameter Settings by Entity Instance
- 48. Port Connectivity Checks: "dac904_pll:u_pll"
- 49. Port Connectivity Checks: "seg_display:u_seg_display"
- 50. Post-Synthesis Netlist Statistics for Top Partition
- 51. Elapsed Time Per Partition
- 52. Analysis & Synthesis Messages
+ 38. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 39. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Mod0
+ 40. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Div0
+ 41. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Mod1
+ 42. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1
+ 43. Parameter Settings for Inferred Entity Instance: seg_display:u_seg_display|lpm_divide:Div1
+ 44. Parameter Settings for Inferred Entity Instance: dds_freq_ctrlword:u_freq_ctrlword|lpm_mult:Mult0
+ 45. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 46. altsyncram Parameter Settings by Entity Instance
+ 47. altpll Parameter Settings by Entity Instance
+ 48. lpm_mult Parameter Settings by Entity Instance
+ 49. Port Connectivity Checks: "dac904_pll:u_pll"
+ 50. Port Connectivity Checks: "seg_display:u_seg_display"
+ 51. Post-Synthesis Netlist Statistics for Top Partition
+ 52. Elapsed Time Per Partition
+ 53. Analysis & Synthesis Messages
 
 
 
@@ -83,18 +84,18 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 27 22:46:59 2026           ;
+; Analysis & Synthesis Status        ; Successful - Thu May 28 22:40:40 2026           ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Standard Edition ;
 ; Revision Name                      ; DDS_simple                                      ;
 ; Top-level Entity Name              ; DDS_simple                                      ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 2,077                                           ;
-;     Total combinational functions  ; 1,899                                           ;
-;     Dedicated logic registers      ; 496                                             ;
-; Total registers                    ; 496                                             ;
+; Total logic elements               ; 3,281                                           ;
+;     Total combinational functions  ; 3,104                                           ;
+;     Dedicated logic registers      ; 544                                             ;
+; Total registers                    ; 544                                             ;
 ; Total pins                         ; 41                                              ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 17,464                                          ;
+; Total memory bits                  ; 24,576                                          ;
 ; Embedded Multiplier 9-bit elements ; 16                                              ;
 ; Total PLLs                         ; 1                                               ;
 +------------------------------------+-------------------------------------------------+
@@ -203,10 +204,7 @@ refer to the applicable agreement for further details.
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processor 8            ;   0.0%      ;
-;     Processors 9-10        ;   0.0%      ;
+;     Processors 6-10        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -258,6 +256,9 @@ refer to the applicable agreement for further details.
 ; db/lpm_abs_5v9.tdf               ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/lpm_abs_5v9.tdf                                ;         ;
 ; db/lpm_abs_k0a.tdf               ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/lpm_abs_k0a.tdf                                ;         ;
 ; db/mult_06t.tdf                  ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/mult_06t.tdf                                   ;         ;
+; db/lpm_divide_dkm.tdf            ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/lpm_divide_dkm.tdf                             ;         ;
+; db/sign_div_unsign_5nh.tdf       ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/sign_div_unsign_5nh.tdf                        ;         ;
+; db/alt_u_div_u9f.tdf             ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/alt_u_div_u9f.tdf                              ;         ;
 ; db/lpm_divide_6bm.tdf            ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/lpm_divide_6bm.tdf                             ;         ;
 ; db/sign_div_unsign_rlh.tdf       ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/sign_div_unsign_rlh.tdf                        ;         ;
 ; db/alt_u_div_a7f.tdf             ; yes             ; Auto-Generated Megafunction            ; D:/GithubDDS/DDS_FPGA/db/alt_u_div_a7f.tdf                              ;         ;
@@ -279,24 +280,24 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 2,077     ;
+; Estimated Total logic elements              ; 3,281     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1899      ;
+; Total combinational functions               ; 3104      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 494       ;
-;     -- 3 input functions                    ; 672       ;
-;     -- <=2 input functions                  ; 733       ;
+;     -- 4 input functions                    ; 857       ;
+;     -- 3 input functions                    ; 1002      ;
+;     -- <=2 input functions                  ; 1245      ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 1166      ;
-;     -- arithmetic mode                      ; 733       ;
+;     -- normal mode                          ; 1991      ;
+;     -- arithmetic mode                      ; 1113      ;
 ;                                             ;           ;
-; Total registers                             ; 496       ;
-;     -- Dedicated logic registers            ; 496       ;
+; Total registers                             ; 544       ;
+;     -- Dedicated logic registers            ; 544       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 41        ;
-; Total memory bits                           ; 17464     ;
+; Total memory bits                           ; 24576     ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 16        ;
 ;                                             ;           ;
@@ -304,9 +305,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 593       ;
-; Total fan-out                               ; 8050      ;
-; Average fan-out                             ; 3.11      ;
+; Maximum fan-out                             ; 641       ;
+; Total fan-out                               ; 11750     ;
+; Average fan-out                             ; 3.06      ;
 +---------------------------------------------+-----------+
 
 
@@ -315,7 +316,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                   ; Entity Name         ; Library Name ;
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |DDS_simple                                 ; 1899 (439)          ; 496 (247)                 ; 17464       ; 16           ; 0       ; 8         ; 41   ; 0            ; |DDS_simple                                                                                                                           ; DDS_simple          ; work         ;
+; |DDS_simple                                 ; 3104 (508)          ; 544 (294)                 ; 24576       ; 16           ; 0       ; 8         ; 41   ; 0            ; |DDS_simple                                                                                                                           ; DDS_simple          ; work         ;
 ;    |MCU_uart:u_mcu_uart|                    ; 140 (140)           ; 106 (106)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|MCU_uart:u_mcu_uart                                                                                                       ; MCU_uart            ; work         ;
 ;    |dac904_pll:u_pll|                       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|dac904_pll:u_pll                                                                                                          ; dac904_pll          ; work         ;
 ;       |altpll:altpll_component|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|dac904_pll:u_pll|altpll:altpll_component                                                                                  ; altpll              ; work         ;
@@ -323,11 +324,15 @@ refer to the applicable agreement for further details.
 ;    |dds_freq_ctrlword:u_freq_ctrlword|      ; 14 (14)             ; 31 (31)                   ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DDS_simple|dds_freq_ctrlword:u_freq_ctrlword                                                                                         ; dds_freq_ctrlword   ; work         ;
 ;       |lpm_mult:Mult0|                      ; 0 (0)               ; 0 (0)                     ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DDS_simple|dds_freq_ctrlword:u_freq_ctrlword|lpm_mult:Mult0                                                                          ; lpm_mult            ; work         ;
 ;          |mult_fft:auto_generated|          ; 0 (0)               ; 0 (0)                     ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DDS_simple|dds_freq_ctrlword:u_freq_ctrlword|lpm_mult:Mult0|mult_fft:auto_generated                                                  ; mult_fft            ; work         ;
-;    |lpm_divide:Div0|                        ; 491 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0                                                                                                           ; lpm_divide          ; work         ;
-;       |lpm_divide_u0p:auto_generated|       ; 491 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0|lpm_divide_u0p:auto_generated                                                                             ; lpm_divide_u0p      ; work         ;
-;          |abs_divider_pbg:divider|          ; 491 (29)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider                                                     ; abs_divider_pbg     ; work         ;
-;             |alt_u_div_d7f:divider|         ; 429 (429)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider|alt_u_div_d7f:divider                               ; alt_u_div_d7f       ; work         ;
-;             |lpm_abs_k0a:my_abs_num|        ; 33 (33)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider|lpm_abs_k0a:my_abs_num                              ; lpm_abs_k0a         ; work         ;
+;    |lpm_divide:Div0|                        ; 624 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0                                                                                                           ; lpm_divide          ; work         ;
+;       |lpm_divide_dkm:auto_generated|       ; 624 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0|lpm_divide_dkm:auto_generated                                                                             ; lpm_divide_dkm      ; work         ;
+;          |sign_div_unsign_5nh:divider|      ; 624 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0|lpm_divide_dkm:auto_generated|sign_div_unsign_5nh:divider                                                 ; sign_div_unsign_5nh ; work         ;
+;             |alt_u_div_u9f:divider|         ; 624 (624)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div0|lpm_divide_dkm:auto_generated|sign_div_unsign_5nh:divider|alt_u_div_u9f:divider                           ; alt_u_div_u9f       ; work         ;
+;    |lpm_divide:Div1|                        ; 482 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div1                                                                                                           ; lpm_divide          ; work         ;
+;       |lpm_divide_u0p:auto_generated|       ; 482 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div1|lpm_divide_u0p:auto_generated                                                                             ; lpm_divide_u0p      ; work         ;
+;          |abs_divider_pbg:divider|          ; 482 (29)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div1|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider                                                     ; abs_divider_pbg     ; work         ;
+;             |alt_u_div_d7f:divider|         ; 429 (429)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div1|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider|alt_u_div_d7f:divider                               ; alt_u_div_d7f       ; work         ;
+;             |lpm_abs_k0a:my_abs_num|        ; 24 (24)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|lpm_divide:Div1|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider|lpm_abs_k0a:my_abs_num                              ; lpm_abs_k0a         ; work         ;
 ;    |lpm_mult:Mult0|                         ; 41 (0)              ; 0 (0)                     ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DDS_simple|lpm_mult:Mult0                                                                                                            ; lpm_mult            ; work         ;
 ;       |mult_66t:auto_generated|             ; 41 (41)             ; 0 (0)                     ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DDS_simple|lpm_mult:Mult0|mult_66t:auto_generated                                                                                    ; mult_66t            ; work         ;
 ;    |lpm_mult:Mult1|                         ; 21 (0)              ; 0 (0)                     ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DDS_simple|lpm_mult:Mult1                                                                                                            ; lpm_mult            ; work         ;
@@ -336,32 +341,32 @@ refer to the applicable agreement for further details.
 ;       |mult_k4t:auto_generated|             ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DDS_simple|lpm_mult:Mult2|mult_k4t:auto_generated                                                                                    ; mult_k4t            ; work         ;
 ;    |lpm_mult:Mult3|                         ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DDS_simple|lpm_mult:Mult3                                                                                                            ; lpm_mult            ; work         ;
 ;       |mult_06t:auto_generated|             ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DDS_simple|lpm_mult:Mult3|mult_06t:auto_generated                                                                                    ; mult_06t            ; work         ;
-;    |seg_display:u_seg_display|              ; 721 (343)           ; 95 (95)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display                                                                                                 ; seg_display         ; work         ;
-;       |lpm_divide:Div0|                     ; 41 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
-;          |lpm_divide_ihm:auto_generated|    ; 41 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                   ; lpm_divide_ihm      ; work         ;
-;             |sign_div_unsign_akh:divider|   ; 41 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh ; work         ;
-;                |alt_u_div_84f:divider|      ; 41 (41)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider ; alt_u_div_84f       ; work         ;
+;    |seg_display:u_seg_display|              ; 1254 (343)          ; 95 (95)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display                                                                                                 ; seg_display         ; work         ;
+;       |lpm_divide:Div0|                     ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_ihm:auto_generated|    ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                   ; lpm_divide_ihm      ; work         ;
+;             |sign_div_unsign_akh:divider|   ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh ; work         ;
+;                |alt_u_div_84f:divider|      ; 38 (38)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider ; alt_u_div_84f       ; work         ;
 ;       |lpm_divide:Div1|                     ; 236 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
 ;          |lpm_divide_0jm:auto_generated|    ; 236 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div1|lpm_divide_0jm:auto_generated                                                   ; lpm_divide_0jm      ; work         ;
 ;             |sign_div_unsign_olh:divider|   ; 236 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div1|lpm_divide_0jm:auto_generated|sign_div_unsign_olh:divider                       ; sign_div_unsign_olh ; work         ;
 ;                |alt_u_div_47f:divider|      ; 236 (236)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Div1|lpm_divide_0jm:auto_generated|sign_div_unsign_olh:divider|alt_u_div_47f:divider ; alt_u_div_47f       ; work         ;
-;       |lpm_divide:Mod0|                     ; 41 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
-;          |lpm_divide_6bm:auto_generated|    ; 41 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated                                                   ; lpm_divide_6bm      ; work         ;
-;             |sign_div_unsign_rlh:divider|   ; 41 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated|sign_div_unsign_rlh:divider                       ; sign_div_unsign_rlh ; work         ;
-;                |alt_u_div_a7f:divider|      ; 41 (41)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated|sign_div_unsign_rlh:divider|alt_u_div_a7f:divider ; alt_u_div_a7f       ; work         ;
-;       |lpm_divide:Mod1|                     ; 60 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
-;          |lpm_divide_3bm:auto_generated|    ; 60 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1|lpm_divide_3bm:auto_generated                                                   ; lpm_divide_3bm      ; work         ;
-;             |sign_div_unsign_olh:divider|   ; 60 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1|lpm_divide_3bm:auto_generated|sign_div_unsign_olh:divider                       ; sign_div_unsign_olh ; work         ;
-;                |alt_u_div_47f:divider|      ; 60 (60)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1|lpm_divide_3bm:auto_generated|sign_div_unsign_olh:divider|alt_u_div_47f:divider ; alt_u_div_47f       ; work         ;
+;       |lpm_divide:Mod0|                     ; 370 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_6bm:auto_generated|    ; 370 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated                                                   ; lpm_divide_6bm      ; work         ;
+;             |sign_div_unsign_rlh:divider|   ; 370 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated|sign_div_unsign_rlh:divider                       ; sign_div_unsign_rlh ; work         ;
+;                |alt_u_div_a7f:divider|      ; 370 (370)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated|sign_div_unsign_rlh:divider|alt_u_div_a7f:divider ; alt_u_div_a7f       ; work         ;
+;       |lpm_divide:Mod1|                     ; 267 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_3bm:auto_generated|    ; 267 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1|lpm_divide_3bm:auto_generated                                                   ; lpm_divide_3bm      ; work         ;
+;             |sign_div_unsign_olh:divider|   ; 267 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1|lpm_divide_3bm:auto_generated|sign_div_unsign_olh:divider                       ; sign_div_unsign_olh ; work         ;
+;                |alt_u_div_47f:divider|      ; 267 (267)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|seg_display:u_seg_display|lpm_divide:Mod1|lpm_divide_3bm:auto_generated|sign_div_unsign_olh:divider|alt_u_div_47f:divider ; alt_u_div_47f       ; work         ;
 ;    |sine_12bit_256:u_rom_carrier_12|        ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_12bit_256:u_rom_carrier_12                                                                                           ; sine_12bit_256      ; work         ;
 ;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_12bit_256:u_rom_carrier_12|altsyncram:altsyncram_component                                                           ; altsyncram          ; work         ;
 ;          |altsyncram_nq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 3072        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_12bit_256:u_rom_carrier_12|altsyncram:altsyncram_component|altsyncram_nq91:auto_generated                            ; altsyncram_nq91     ; work         ;
-;    |sine_14bit_256:u_rom_1k|                ; 0 (0)               ; 0 (0)                     ; 28          ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_1k                                                                                                   ; sine_14bit_256      ; work         ;
-;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 28          ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_1k|altsyncram:altsyncram_component                                                                   ; altsyncram          ; work         ;
-;          |altsyncram_rq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 28          ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_1k|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated                                    ; altsyncram_rq91     ; work         ;
-;    |sine_14bit_256:u_rom_2k|                ; 0 (0)               ; 0 (0)                     ; 28          ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_2k                                                                                                   ; sine_14bit_256      ; work         ;
-;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 28          ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_2k|altsyncram:altsyncram_component                                                                   ; altsyncram          ; work         ;
-;          |altsyncram_rq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 28          ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_2k|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated                                    ; altsyncram_rq91     ; work         ;
+;    |sine_14bit_256:u_rom_1k|                ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_1k                                                                                                   ; sine_14bit_256      ; work         ;
+;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_1k|altsyncram:altsyncram_component                                                                   ; altsyncram          ; work         ;
+;          |altsyncram_rq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_1k|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated                                    ; altsyncram_rq91     ; work         ;
+;    |sine_14bit_256:u_rom_2k|                ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_2k                                                                                                   ; sine_14bit_256      ; work         ;
+;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_2k|altsyncram:altsyncram_component                                                                   ; altsyncram          ; work         ;
+;          |altsyncram_rq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_2k|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated                                    ; altsyncram_rq91     ; work         ;
 ;    |sine_14bit_256:u_rom_ask|               ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_ask                                                                                                  ; sine_14bit_256      ; work         ;
 ;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_ask|altsyncram:altsyncram_component                                                                  ; altsyncram          ; work         ;
 ;          |altsyncram_rq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_ask|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated                                   ; altsyncram_rq91     ; work         ;
@@ -374,7 +379,7 @@ refer to the applicable agreement for further details.
 ;    |sine_14bit_256:u_rom_psk|               ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_psk                                                                                                  ; sine_14bit_256      ; work         ;
 ;       |altsyncram:altsyncram_component|     ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_psk|altsyncram:altsyncram_component                                                                  ; altsyncram          ; work         ;
 ;          |altsyncram_rq91:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 3584        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sine_14bit_256:u_rom_psk|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated                                   ; altsyncram_rq91     ; work         ;
-;    |sintopwm:u_pwm_inst|                    ; 32 (32)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sintopwm:u_pwm_inst                                                                                                       ; sintopwm            ; work         ;
+;    |sintopwm:u_pwm_inst|                    ; 20 (20)             ; 18 (18)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DDS_simple|sintopwm:u_pwm_inst                                                                                                       ; sintopwm            ; work         ;
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -469,14 +474,30 @@ Encoding Type:  One-Hot
 ; seg_display:u_seg_display|z_reg[0]                                                      ; Merged with seg_display:u_seg_display|base[7]  ;
 ; dds_freq_ctrlword:u_freq_ctrlword|ctrl_reg[0]                                           ; Stuck at GND due to stuck port data_in         ;
 ; phase[0]                                                                                ; Stuck at GND due to stuck port data_in         ;
+; phase_1k[0]                                                                             ; Merged with digital_mod_phase[0]               ;
 ; mod_phase[4]                                                                            ; Merged with digital_mod_phase[0]               ;
+; phase_2k[1]                                                                             ; Merged with digital_mod_phase[0]               ;
+; phase_1k[1]                                                                             ; Merged with digital_mod_phase[1]               ;
+; phase_2k[2]                                                                             ; Merged with digital_mod_phase[1]               ;
 ; mod_phase[5]                                                                            ; Merged with digital_mod_phase[1]               ;
+; phase_2k[3]                                                                             ; Merged with phase_1k[2]                        ;
+; mod_phase[6]                                                                            ; Merged with digital_mod_phase[2]               ;
+; phase_2k[4]                                                                             ; Merged with phase_1k[3]                        ;
+; mod_phase[7]                                                                            ; Merged with digital_mod_phase[3]               ;
+; phase_2k[5]                                                                             ; Merged with phase_1k[4]                        ;
+; phase_2k[6]                                                                             ; Merged with phase_1k[5]                        ;
+; phase_2k[7]                                                                             ; Merged with phase_1k[6]                        ;
+; phase_2k[8]                                                                             ; Merged with phase_1k[7]                        ;
+; phase_2k[9]                                                                             ; Merged with phase_1k[8]                        ;
+; phase_2k[10]                                                                            ; Merged with phase_1k[9]                        ;
+; phase_2k[11]                                                                            ; Merged with phase_1k[10]                       ;
+; phase_2k[12]                                                                            ; Merged with phase_1k[11]                       ;
+; phase_2k[13]                                                                            ; Merged with phase_1k[12]                       ;
+; phase_2k[14]                                                                            ; Merged with phase_1k[13]                       ;
 ; seg_display:u_seg_display|state~9                                                       ; Lost fanout                                    ;
 ; MCU_uart:u_mcu_uart|state~8                                                             ; Lost fanout                                    ;
 ; MCU_uart:u_mcu_uart|state~9                                                             ; Lost fanout                                    ;
-; digital_mod_phase[2]                                                                    ; Merged with mod_phase[6]                       ;
-; digital_mod_phase[3]                                                                    ; Merged with mod_phase[7]                       ;
-; Total Number of Removed Registers = 32                                                  ;                                                ;
+; Total Number of Removed Registers = 48                                                  ;                                                ;
 +-----------------------------------------------------------------------------------------+------------------------------------------------+
 
 
@@ -495,10 +516,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 496   ;
+; Total registers                              ; 544   ;
 ; Number of registers using Synchronous Clear  ; 61    ;
 ; Number of registers using Synchronous Load   ; 32    ;
-; Number of registers using Asynchronous Clear ; 404   ;
+; Number of registers using Asynchronous Clear ; 451   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 308   ;
 ; Number of registers using Preset             ; 0     ;
@@ -510,10 +531,15 @@ Encoding Type:  One-Hot
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; work_mode[0]                            ; 37      ;
+; work_mode[0]                            ; 42      ;
 ; bb_shift_reg[7]                         ; 1       ;
-; am_ma[3]                                ; 8       ;
-; am_ma[1]                                ; 8       ;
+; fm_dev[12]                              ; 5       ;
+; fm_dev[9]                               ; 5       ;
+; fm_dev[8]                               ; 5       ;
+; fm_dev[7]                               ; 5       ;
+; am_ma[3]                                ; 6       ;
+; am_ma[1]                                ; 7       ;
+; fm_dev[3]                               ; 5       ;
 ; am_fc[18]                               ; 1       ;
 ; am_fc[17]                               ; 1       ;
 ; am_fc[19]                               ; 1       ;
@@ -535,11 +561,6 @@ Encoding Type:  One-Hot
 ; sine_freq[3]                            ; 1       ;
 ; bb_shift_reg[5]                         ; 1       ;
 ; bb_shift_reg[4]                         ; 1       ;
-; fm_dev[3]                               ; 1       ;
-; fm_dev[7]                               ; 1       ;
-; fm_dev[8]                               ; 1       ;
-; fm_dev[9]                               ; 1       ;
-; fm_dev[12]                              ; 1       ;
 ; bb_shift_reg[1]                         ; 1       ;
 ; Total number of inverted registers = 31 ;         ;
 +-----------------------------------------+---------+
@@ -550,21 +571,21 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|mode_sel[1]      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|mode_sel[0]      ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|idx_cnt[1]       ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|base[10]   ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|freq_temp[25]    ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|freq_temp[0]     ;
 ; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|base[13]   ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DDS_simple|seg_display:u_seg_display|temp_f[1]  ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|bit_cnt[2]       ;
-; 5:1                ; 30 bits   ; 90 LEs        ; 60 LEs               ; 30 LEs                 ; Yes        ; |DDS_simple|seg_display:u_seg_display|temp_f[29] ;
-; 7:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|baud_cnt[15]     ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|bit_cnt[1]       ;
+; 5:1                ; 30 bits   ; 90 LEs        ; 60 LEs               ; 30 LEs                 ; Yes        ; |DDS_simple|seg_display:u_seg_display|temp_f[30] ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DDS_simple|MCU_uart:u_mcu_uart|baud_cnt[8]      ;
 ; 9:1                ; 26 bits   ; 156 LEs       ; 52 LEs               ; 104 LEs                ; No         ; |DDS_simple|display_freq                         ;
-; 15:1               ; 6 bits    ; 60 LEs        ; 54 LEs               ; 6 LEs                  ; No         ; |DDS_simple|seg_display:u_seg_display|Mux3       ;
+; 15:1               ; 6 bits    ; 60 LEs        ; 54 LEs               ; 6 LEs                  ; No         ; |DDS_simple|seg_display:u_seg_display|Mux0       ;
 ; 8:1                ; 14 bits   ; 70 LEs        ; 70 LEs               ; 0 LEs                  ; No         ; |DDS_simple|dac_comb                             ;
-; 12:1               ; 6 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |DDS_simple|display_freq[16]                     ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector3        ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector0        ;
+; 12:1               ; 6 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |DDS_simple|display_freq[15]                     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector1        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |DDS_simple|MCU_uart:u_mcu_uart|Selector2        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 
 
@@ -1490,7 +1511,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
@@ -1544,6 +1565,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
 ; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
 +------------------------------------------------+--------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 10             ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_dkm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1922,12 +1966,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +-------------------------------------------------------+
 ; Port Connectivity Checks: "seg_display:u_seg_display" ;
-+-----------+-------+----------+------------------------+
-; Port      ; Type  ; Severity ; Details                ;
-+-----------+-------+----------+------------------------+
-; en        ; Input ; Info     ; Stuck at VCC           ;
-; ma[31..8] ; Input ; Info     ; Stuck at GND           ;
-+-----------+-------+----------+------------------------+
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; en   ; Input ; Info     ; Stuck at VCC                ;
++------+-------+----------+-----------------------------+
 
 
 +-----------------------------------------------------+
@@ -1936,32 +1979,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 41                          ;
-; cycloneiii_ff         ; 496                         ;
-;     CLR               ; 140                         ;
+; cycloneiii_ff         ; 544                         ;
+;     CLR               ; 187                         ;
 ;     CLR SCLR          ; 14                          ;
 ;     ENA               ; 26                          ;
 ;     ENA CLR           ; 203                         ;
 ;     ENA CLR SCLR      ; 47                          ;
 ;     ENA SLD           ; 32                          ;
-;     plain             ; 34                          ;
-; cycloneiii_lcell_comb ; 1908                        ;
-;     arith             ; 733                         ;
+;     plain             ; 35                          ;
+; cycloneiii_lcell_comb ; 3113                        ;
+;     arith             ; 1113                        ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 256                         ;
-;         3 data inputs ; 472                         ;
-;     normal            ; 1175                        ;
-;         0 data inputs ; 52                          ;
-;         1 data inputs ; 66                          ;
-;         2 data inputs ; 363                         ;
-;         3 data inputs ; 200                         ;
-;         4 data inputs ; 494                         ;
+;         2 data inputs ; 324                         ;
+;         3 data inputs ; 784                         ;
+;     normal            ; 2000                        ;
+;         0 data inputs ; 104                         ;
+;         1 data inputs ; 67                          ;
+;         2 data inputs ; 754                         ;
+;         3 data inputs ; 218                         ;
+;         4 data inputs ; 857                         ;
 ; cycloneiii_mac_mult   ; 8                           ;
 ; cycloneiii_mac_out    ; 8                           ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 96                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 63.90                       ;
-; Average LUT depth     ; 21.40                       ;
+; Max LUT depth         ; 71.60                       ;
+; Average LUT depth     ; 36.76                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1970,7 +2013,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:09     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -1980,7 +2023,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
-    Info: Processing started: Wed May 27 22:46:36 2026
+    Info: Processing started: Thu May 28 22:40:23 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DDS_simple -c DDS_simple
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
@@ -2003,10 +2046,11 @@ Info (12021): Found 1 design units, including 1 entities, in source file sine_14
 Info (12021): Found 1 design units, including 1 entities, in source file sintopwm.v
     Info (12023): Found entity 1: sintopwm File: D:/GithubDDS/DDS_FPGA/sintopwm.v Line: 1
 Info (12127): Elaborating entity "DDS_simple" for the top level hierarchy
-Warning (10240): Verilog HDL Always Construct warning at DDS_simple.v(385): inferring latch(es) for variable "mod_phase", which holds its previous value in one or more paths through the always construct File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 385
-Warning (10230): Verilog HDL assignment warning at DDS_simple.v(392): truncated value with size 47 to match size of target (32) File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 392
-Warning (10230): Verilog HDL assignment warning at DDS_simple.v(412): truncated value with size 32 to match size of target (15) File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 412
-Warning (10230): Verilog HDL assignment warning at DDS_simple.v(415): truncated value with size 31 to match size of target (16) File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 415
+Warning (10240): Verilog HDL Always Construct warning at DDS_simple.v(387): inferring latch(es) for variable "mod_phase", which holds its previous value in one or more paths through the always construct File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 387
+Warning (10240): Verilog HDL Always Construct warning at DDS_simple.v(393): inferring latch(es) for variable "phase_2k", which holds its previous value in one or more paths through the always construct File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 393
+Warning (10230): Verilog HDL assignment warning at DDS_simple.v(405): truncated value with size 47 to match size of target (32) File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 405
+Warning (10230): Verilog HDL assignment warning at DDS_simple.v(425): truncated value with size 32 to match size of target (15) File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 425
+Warning (10230): Verilog HDL assignment warning at DDS_simple.v(428): truncated value with size 31 to match size of target (16) File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 428
 Info (12128): Elaborating entity "sine_14bit_256" for hierarchy "sine_14bit_256:u_rom_psk" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 291
 Info (12128): Elaborating entity "altsyncram" for hierarchy "sine_14bit_256:u_rom_psk|altsyncram:altsyncram_component" File: D:/GithubDDS/DDS_FPGA/sine_14bit_256.v Line: 81
 Info (12130): Elaborated megafunction instantiation "sine_14bit_256:u_rom_psk|altsyncram:altsyncram_component" File: D:/GithubDDS/DDS_FPGA/sine_14bit_256.v Line: 81
@@ -2030,11 +2074,11 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
 Info (12128): Elaborating entity "altsyncram_rq91" for hierarchy "sine_14bit_256:u_rom_psk|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated" File: f:/intelfpga/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (12128): Elaborating entity "dds_freq_ctrlword" for hierarchy "dds_freq_ctrlword:u_freq_ctrlword" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 302
 Info (12128): Elaborating entity "MCU_uart" for hierarchy "MCU_uart:u_mcu_uart" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 308
-Info (12128): Elaborating entity "seg_display" for hierarchy "seg_display:u_seg_display" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 313
+Info (12128): Elaborating entity "seg_display" for hierarchy "seg_display:u_seg_display" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 315
 Warning (10230): Verilog HDL assignment warning at seg_display.v(27): truncated value with size 32 to match size of target (4) File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 27
 Warning (10230): Verilog HDL assignment warning at seg_display.v(28): truncated value with size 32 to match size of target (4) File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 28
-Info (12128): Elaborating entity "sintopwm" for hierarchy "sintopwm:u_pwm_inst" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 326
-Info (12128): Elaborating entity "sine_12bit_256" for hierarchy "sine_12bit_256:u_rom_carrier_12" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 338
+Info (12128): Elaborating entity "sintopwm" for hierarchy "sintopwm:u_pwm_inst" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 328
+Info (12128): Elaborating entity "sine_12bit_256" for hierarchy "sine_12bit_256:u_rom_carrier_12" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 340
 Info (12128): Elaborating entity "altsyncram" for hierarchy "sine_12bit_256:u_rom_carrier_12|altsyncram:altsyncram_component" File: D:/GithubDDS/DDS_FPGA/sine_12bit_256.v Line: 81
 Info (12130): Elaborated megafunction instantiation "sine_12bit_256:u_rom_carrier_12|altsyncram:altsyncram_component" File: D:/GithubDDS/DDS_FPGA/sine_12bit_256.v Line: 81
 Info (12133): Instantiated megafunction "sine_12bit_256:u_rom_carrier_12|altsyncram:altsyncram_component" with the following parameter: File: D:/GithubDDS/DDS_FPGA/sine_12bit_256.v Line: 81
@@ -2055,7 +2099,7 @@ Info (12133): Instantiated megafunction "sine_12bit_256:u_rom_carrier_12|altsync
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_nq91.tdf
     Info (12023): Found entity 1: altsyncram_nq91 File: D:/GithubDDS/DDS_FPGA/db/altsyncram_nq91.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_nq91" for hierarchy "sine_12bit_256:u_rom_carrier_12|altsyncram:altsyncram_component|altsyncram_nq91:auto_generated" File: f:/intelfpga/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "dac904_pll" for hierarchy "dac904_pll:u_pll" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 464
+Info (12128): Elaborating entity "dac904_pll" for hierarchy "dac904_pll:u_pll" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 477
 Info (12128): Elaborating entity "altpll" for hierarchy "dac904_pll:u_pll|altpll:altpll_component" File: D:/GithubDDS/DDS_FPGA/dac904_pll.v Line: 103
 Info (12130): Elaborated megafunction instantiation "dac904_pll:u_pll|altpll:altpll_component" File: D:/GithubDDS/DDS_FPGA/dac904_pll.v Line: 103
 Info (12133): Instantiated megafunction "dac904_pll:u_pll|altpll:altpll_component" with the following parameter: File: D:/GithubDDS/DDS_FPGA/dac904_pll.v Line: 103
@@ -2117,19 +2161,20 @@ Info (12133): Instantiated megafunction "dac904_pll:u_pll|altpll:altpll_componen
 Info (12021): Found 1 design units, including 1 entities, in source file db/dac904_pll_altpll.v
     Info (12023): Found entity 1: dac904_pll_altpll File: D:/GithubDDS/DDS_FPGA/db/dac904_pll_altpll.v Line: 30
 Info (12128): Elaborating entity "dac904_pll_altpll" for hierarchy "dac904_pll:u_pll|altpll:altpll_component|dac904_pll_altpll:auto_generated" File: f:/intelfpga/18.0/quartus/libraries/megafunctions/altpll.tdf Line: 897
-Info (278001): Inferred 10 megafunctions from design logic
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult2" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 411
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 412
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult3" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 414
+Info (278001): Inferred 11 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult2" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 424
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 425
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult3" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 427
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 310
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "seg_display:u_seg_display|Mod0" File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 27
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "seg_display:u_seg_display|Div0" File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 27
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "seg_display:u_seg_display|Mod1" File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 28
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult1" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 393
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult1" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 406
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "seg_display:u_seg_display|Div1" File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 44
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "dds_freq_ctrlword:u_freq_ctrlword|Mult0" File: D:/GithubDDS/DDS_FPGA/dds_freq_ctrlword.v Line: 40
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 391
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult2" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 411
-Info (12133): Instantiated megafunction "lpm_mult:Mult2" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 411
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 404
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult2" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 424
+Info (12133): Instantiated megafunction "lpm_mult:Mult2" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 424
     Info (12134): Parameter "LPM_WIDTHA" = "14"
     Info (12134): Parameter "LPM_WIDTHB" = "9"
     Info (12134): Parameter "LPM_WIDTHP" = "23"
@@ -2141,8 +2186,8 @@ Info (12133): Instantiated megafunction "lpm_mult:Mult2" with the following para
     Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_k4t.tdf
     Info (12023): Found entity 1: mult_k4t File: D:/GithubDDS/DDS_FPGA/db/mult_k4t.tdf Line: 28
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 412
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 412
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 425
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 425
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "8"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
@@ -2162,8 +2207,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_
     Info (12023): Found entity 1: lpm_abs_5v9 File: D:/GithubDDS/DDS_FPGA/db/lpm_abs_5v9.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_k0a.tdf
     Info (12023): Found entity 1: lpm_abs_k0a File: D:/GithubDDS/DDS_FPGA/db/lpm_abs_k0a.tdf Line: 24
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult3" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 414
-Info (12133): Instantiated megafunction "lpm_mult:Mult3" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 414
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult3" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 427
+Info (12133): Instantiated megafunction "lpm_mult:Mult3" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 427
     Info (12134): Parameter "LPM_WIDTHA" = "14"
     Info (12134): Parameter "LPM_WIDTHB" = "16"
     Info (12134): Parameter "LPM_WIDTHP" = "30"
@@ -2175,6 +2220,18 @@ Info (12133): Instantiated megafunction "lpm_mult:Mult3" with the following para
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_06t.tdf
     Info (12023): Found entity 1: mult_06t File: D:/GithubDDS/DDS_FPGA/db/mult_06t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 310
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 310
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "10"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_dkm.tdf
+    Info (12023): Found entity 1: lpm_divide_dkm File: D:/GithubDDS/DDS_FPGA/db/lpm_divide_dkm.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_5nh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_5nh File: D:/GithubDDS/DDS_FPGA/db/sign_div_unsign_5nh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_u9f.tdf
+    Info (12023): Found entity 1: alt_u_div_u9f File: D:/GithubDDS/DDS_FPGA/db/alt_u_div_u9f.tdf Line: 26
 Info (12130): Elaborated megafunction instantiation "seg_display:u_seg_display|lpm_divide:Mod0" File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 27
 Info (12133): Instantiated megafunction "seg_display:u_seg_display|lpm_divide:Mod0" with the following parameter: File: D:/GithubDDS/DDS_FPGA/seg_display.v Line: 27
     Info (12134): Parameter "LPM_WIDTHN" = "32"
@@ -2211,8 +2268,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_olh File: D:/GithubDDS/DDS_FPGA/db/sign_div_unsign_olh.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_47f.tdf
     Info (12023): Found entity 1: alt_u_div_47f File: D:/GithubDDS/DDS_FPGA/db/alt_u_div_47f.tdf Line: 26
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult1" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 393
-Info (12133): Instantiated megafunction "lpm_mult:Mult1" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 393
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult1" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 406
+Info (12133): Instantiated megafunction "lpm_mult:Mult1" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 406
     Info (12134): Parameter "LPM_WIDTHA" = "32"
     Info (12134): Parameter "LPM_WIDTHB" = "8"
     Info (12134): Parameter "LPM_WIDTHP" = "40"
@@ -2245,8 +2302,8 @@ Info (12133): Instantiated megafunction "dds_freq_ctrlword:u_freq_ctrlword|lpm_m
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_fft.tdf
     Info (12023): Found entity 1: mult_fft File: D:/GithubDDS/DDS_FPGA/db/mult_fft.tdf Line: 30
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 391
-Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 391
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0" File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 404
+Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter: File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 404
     Info (12134): Parameter "LPM_WIDTHA" = "33"
     Info (12134): Parameter "LPM_WIDTHB" = "14"
     Info (12134): Parameter "LPM_WIDTHP" = "47"
@@ -2261,30 +2318,28 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/mult
 Info (13014): Ignored 190 buffer(s)
     Info (13016): Ignored 23 CARRY_SUM buffer(s)
     Info (13019): Ignored 167 SOFT buffer(s)
-Info (13000): Registers with preset signals will power-up high File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 368
+Info (13000): Registers with preset signals will power-up high File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 370
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "led" is stuck at VCC File: D:/GithubDDS/DDS_FPGA/DDS_simple.v Line: 198
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 3 registers lost all their fanouts during netlist optimizations.
-Info (17036): Removed 7 MSB VCC or GND address nodes from RAM block "sine_14bit_256:u_rom_1k|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated|ALTSYNCRAM" File: D:/GithubDDS/DDS_FPGA/db/altsyncram_rq91.tdf Line: 31
-Info (17036): Removed 7 MSB VCC or GND address nodes from RAM block "sine_14bit_256:u_rom_2k|altsyncram:altsyncram_component|altsyncram_rq91:auto_generated|ALTSYNCRAM" File: D:/GithubDDS/DDS_FPGA/db/altsyncram_rq91.tdf Line: 31
 Info (17016): Found the following redundant logic cells in design
-    Info (17048): Logic cell "seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated|sign_div_unsign_rlh:divider|alt_u_div_a7f:divider|add_sub_30_result_int[1]~14" File: D:/GithubDDS/DDS_FPGA/db/alt_u_div_a7f.tdf Line: 146
-    Info (17048): Logic cell "lpm_divide:Div0|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider|alt_u_div_d7f:divider|add_sub_14_result_int[1]~16" File: D:/GithubDDS/DDS_FPGA/db/alt_u_div_d7f.tdf Line: 56
+    Info (17048): Logic cell "seg_display:u_seg_display|lpm_divide:Mod0|lpm_divide_6bm:auto_generated|sign_div_unsign_rlh:divider|alt_u_div_a7f:divider|add_sub_15_result_int[1]~14" File: D:/GithubDDS/DDS_FPGA/db/alt_u_div_a7f.tdf Line: 61
+    Info (17048): Logic cell "lpm_divide:Div1|lpm_divide_u0p:auto_generated|abs_divider_pbg:divider|alt_u_div_d7f:divider|add_sub_14_result_int[1]~16" File: D:/GithubDDS/DDS_FPGA/db/alt_u_div_d7f.tdf Line: 56
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2240 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3444 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 8 input pins
     Info (21059): Implemented 33 output pins
-    Info (21061): Implemented 2086 logic cells
+    Info (21061): Implemented 3290 logic cells
     Info (21064): Implemented 96 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 16 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 4888 megabytes
-    Info: Processing ended: Wed May 27 22:46:59 2026
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:36
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 4892 megabytes
+    Info: Processing ended: Thu May 28 22:40:40 2026
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:27
 
 

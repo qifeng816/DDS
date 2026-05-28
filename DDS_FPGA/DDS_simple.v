@@ -307,9 +307,11 @@ MCU_uart u_mcu_uart(
     .mode_sel(uart_mode), .mode_valid(uart_mode_valid)
 );
 
+wire [31:0] display_ma = (work_mode == 3'd3) ? (fm_dev / 32'd1000) : {24'd0, am_ma};
+
 seg_display u_seg_display(
     .clk(clk), .rst_n(rst_n), .en(1'b1), .freq(display_freq),
-    .ma({24'd0, am_ma}), .sel(sel), .seg(seg)
+    .ma(display_ma), .sel(sel), .seg(seg)
 );
 
 // 李萨如图波形 ROM 查找
@@ -384,7 +386,18 @@ end
 
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) mod_phase <= 0;
-    else mod_phase <= mod_phase + 32'd86_000; 
+    else mod_phase <= mod_phase + 32'd86_000;
+end
+
+// 李萨如图相位累加器：1kHz 和 2kHz
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        phase_1k <= 0;
+        phase_2k <= 0;
+    end else begin
+        phase_1k <= phase_1k + FTW_1K;
+        phase_2k <= phase_2k + FTW_2K;
+    end
 end
 
 wire signed [14:0] fm_mod_signed = {1'b0, mod_data} - 15'sd8192;
