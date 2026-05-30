@@ -1,5 +1,5 @@
 --lpm_abs CARRY_CHAIN="MANUAL" DEVICE_FAMILY="Cyclone IV E" IGNORE_CARRY_BUFFERS="OFF" LPM_WIDTH=32 data result
---VERSION_BEGIN 18.0 cbx_cycloneii 2018:04:24:18:04:18:SJ cbx_lpm_abs 2018:04:24:18:04:18:SJ cbx_lpm_add_sub 2018:04:24:18:04:18:SJ cbx_mgl 2018:04:24:18:08:49:SJ cbx_nadder 2018:04:24:18:04:18:SJ cbx_stratix 2018:04:24:18:04:18:SJ cbx_stratixii 2018:04:24:18:04:18:SJ cbx_util_mgl 2018:04:24:18:04:18:SJ  VERSION_END
+--VERSION_BEGIN 18.1 cbx_cycloneii 2018:09:12:13:04:24:SJ cbx_lpm_abs 2018:09:12:13:04:24:SJ cbx_lpm_add_sub 2018:09:12:13:04:24:SJ cbx_mgl 2018:09:12:13:10:36:SJ cbx_nadder 2018:09:12:13:04:24:SJ cbx_stratix 2018:09:12:13:04:24:SJ cbx_stratixii 2018:09:12:13:04:24:SJ cbx_util_mgl 2018:09:12:13:04:24:SJ  VERSION_END
 
 
 -- Copyright (C) 2018  Intel Corporation. All rights reserved.
@@ -28,14 +28,14 @@ SUBDESIGN lpm_abs_k0a
 	result[31..0]	:	output;
 ) 
 VARIABLE 
-	cs1a[31..0] : carry_sum;
+	cs2a[31..0] : carry_sum;
 	result_tmp[31..0]	: WIRE;
 
 BEGIN 
-	cs1a[].cin = ( ((data[31..31] $ data[31..1]) & cs1a[30..0].cout), ((! data[0..0]) & data[31..31]));
-	cs1a[].sin = ( ((data[31..31] $ data[31..1]) $ cs1a[30..0].cout), data[0..0]);
+	cs2a[].cin = ( ((data[31..31] $ data[31..1]) & cs2a[30..0].cout), ((! data[0..0]) & data[31..31]));
+	cs2a[].sin = ( ((data[31..31] $ data[31..1]) $ cs2a[30..0].cout), data[0..0]);
 	overflow = (result_tmp[31..31] & data[31..31]);
 	result[] = result_tmp[];
-	result_tmp[] = ( cs1a[31..1].sout, data[0..0]);
+	result_tmp[] = ( cs2a[31..1].sout, data[0..0]);
 END;
 --VALID FILE

@@ -132,15 +132,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "sw_liss",
-					"strict" : false
-				},
-				{
 					"name" : "sw_change_a",
 					"strict" : false
 				},
 				{
 					"name" : "switch",
+					"strict" : false
+				},
+				{
+					"name" : "sw_liss",
 					"strict" : false
 				},
 				{

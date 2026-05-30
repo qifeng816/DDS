@@ -212,7 +212,8 @@ wire [31:0] uart_data;
 wire        uart_data_valid;
 wire [2:0]  uart_mode;
 wire        uart_mode_valid;
-wire [1:0]  uart_data_idx;    
+wire [1:0]  uart_data_idx;
+wire [2:0]  uart_dot_cnt;
 
 reg [2:0]   work_mode;
 reg [31:0]  sine_freq;
@@ -220,6 +221,7 @@ reg [31:0]  am_fc;
 reg [7:0]   am_ma;
 reg [31:0]  fm_fc;
 reg [31:0]  fm_dev;
+reg [7:0]   square_duty; // 方波占空比 0-100
 
 reg  [31:0] phase;
 reg  [31:0] mod_phase;
@@ -251,12 +253,33 @@ wire [13:0] carrier_100k;
 wire signed [14:0] carrier_signed;
 wire signed [14:0] mod_signed;
 wire signed [23:0] mod_depth_long;
-wire signed [14:0] mod_depth;
-wire signed [15:0] envelope;       
+wire signed [15:0] mod_depth;
+wire signed [15:0] envelope;
 wire signed [30:0] am_mult;
-wire signed [15:0] am_scaled;      
+wire signed [15:0] am_scaled;
 wire signed [15:0] am_final_signed;
-wire [13:0] am_out;
+reg  [13:0] am_out;
+wire [13:0] square_out;
+
+// 正弦波幅度调整：增益 75/128，峰峰值约 9600 LSB (~7.5V)
+wire signed [14:0] rom_signed = {1'b0, rom_data} - 15'sd8192;
+wire signed [31:0] sine_gain_tmp = rom_signed * 32'sd75;
+wire signed [14:0] sine_gain_signed = sine_gain_tmp / 32'sd128;
+wire [13:0]        sine_gain = sine_gain_signed + 15'sd8192;
+
+// ============================================================
+// 扫频参数与信号
+// ============================================================
+parameter SWEEP_MIN      = 32'd100;        // 起始频率 100Hz
+parameter SWEEP_MAX      = 32'd10_000_000; // 终止频率 10MHz
+parameter SWEEP_INTERVAL = 32'd83_333;     // 步进间隔 1.667ms @ 50MHz，速度为原来的60%
+
+reg [31:0] sweep_freq;
+reg [31:0] sweep_cnt;
+reg        sweep_dir; // 0=递增, 1=递减
+
+wire [31:0] sweep_step_raw = sweep_freq / 32'd10;           // 10% 步进
+wire [31:0] sweep_step     = (sweep_step_raw == 32'd0) ? 32'd1 : sweep_step_raw;
 
 // ============================================================
 // 2. 二进制基带序列产生 (10kbps)
@@ -303,11 +326,13 @@ dds_freq_ctrlword u_freq_ctrlword(
 
 MCU_uart u_mcu_uart(
     .clk(clk), .rst_n(rst_n), .uart_rx(uart_rx), .data_out(uart_data),
-    .data_valid(uart_data_valid), .data_idx(uart_data_idx), 
+    .data_valid(uart_data_valid), .data_idx(uart_data_idx),
+    .dot_cnt(uart_dot_cnt),
     .mode_sel(uart_mode), .mode_valid(uart_mode_valid)
 );
 
-wire [31:0] display_ma = (work_mode == 3'd3) ? (fm_dev / 32'd1000) : {24'd0, am_ma};
+wire [31:0] display_ma = (work_mode == 3'd3) ? (fm_dev / 32'd1000) :
+                         (work_mode == 3'd5) ? {24'd0, square_duty} : {24'd0, am_ma};
 
 seg_display u_seg_display(
     .clk(clk), .rst_n(rst_n), .en(1'b1), .freq(display_freq),
@@ -366,18 +391,32 @@ always @(posedge clk or negedge rst_n) begin
         work_mode <= 3'd1; sine_freq <= 32'd1000;
         am_fc <= 32'd1_000_000; am_ma <= 8'd10;
         fm_fc <= 32'd100_000;   fm_dev <= 32'd5000;
+        square_duty <= 8'd50;
     end else begin
         if(uart_mode_valid) work_mode <= uart_mode;
         if(uart_data_valid) begin
             case(work_mode)
                 3'd1: sine_freq <= uart_data;
-                3'd2: begin 
+                3'd2: begin
                     if(uart_data_idx == 2'd0)      am_fc <= uart_data;
                     else if(uart_data_idx == 2'd1) am_ma <= uart_data[7:0];
                 end
-                3'd3: begin 
-                    if(uart_data_idx == 2'd0)      fm_fc <= uart_data;
-                    else if(uart_data_idx == 2'd1) fm_dev <= uart_data;
+                3'd3: begin
+                    if(uart_data_idx == 2'd0) begin
+                        fm_fc <= uart_data;
+                    end else if(uart_data_idx == 2'd1) begin
+                        case(uart_dot_cnt)
+                            3'd0: fm_dev <= uart_data;           // 整数：直接当 Hz 用，兼容单片机
+                            3'd1: fm_dev <= uart_data * 32'd100; // 1位小数：默认单位 kHz -> Hz
+                            3'd2: fm_dev <= uart_data * 32'd10;
+                            3'd3: fm_dev <= uart_data * 32'd1;
+                            default: fm_dev <= uart_data;
+                        endcase
+                    end
+                end
+                3'd5: begin
+                    if(uart_data_idx == 2'd0)      sine_freq <= uart_data;      // 方波频率
+                    else if(uart_data_idx == 2'd1) square_duty <= uart_data[7:0]; // 方波占空比
                 end
             endcase
         end
@@ -417,20 +456,140 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 // ============================================================
-// 6. AM 调制算法逻辑
+// 5.5 扫频控制逻辑 (100Hz ~ 10MHz，按百分比步进)
 // ============================================================
-assign carrier_signed = $signed({1'b0, rom_data}) - 15'sd8192; 
-assign mod_signed     = $signed({1'b0, mod_data}) - 15'sd8192;
-assign mod_depth_long = mod_signed * $signed({1'b0, am_ma}); 
-assign mod_depth      = (mod_depth_long + 24'sd50) / 100;
-assign envelope       = 16'sd8192 + mod_depth; 
-assign am_mult        = carrier_signed * envelope;
-assign am_scaled      = (am_mult + 31'sd8192) >>> 14;
-assign am_final_signed = am_scaled + 16'sd8050;
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        sweep_freq <= SWEEP_MIN;
+        sweep_cnt  <= 32'd0;
+        sweep_dir  <= 1'b0; // 0=递增, 1=递减
+    end else if(work_mode == 3'd4) begin
+        if(sweep_cnt >= SWEEP_INTERVAL) begin
+            sweep_cnt <= 32'd0;
+            if(sweep_dir == 1'b0) begin // 递增
+                if(sweep_freq >= SWEEP_MAX - sweep_step)
+                    sweep_dir <= 1'b1; // 到达上限，反转
+                else
+                    sweep_freq <= sweep_freq + sweep_step;
+            end else begin // 递减
+                if(sweep_freq <= SWEEP_MIN + sweep_step)
+                    sweep_dir <= 1'b0; // 到达下限，反转
+                else
+                    sweep_freq <= sweep_freq - sweep_step;
+            end
+        end else begin
+            sweep_cnt <= sweep_cnt + 1'b1;
+        end
+    end else begin
+        // 非扫频模式重置
+        sweep_freq <= SWEEP_MIN;
+        sweep_cnt  <= 32'd0;
+        sweep_dir  <= 1'b0;
+    end
+end
 
-assign am_out = (am_final_signed > 16'sd16383) ? 14'd16383 : 
-                (am_final_signed < 16'sd0)     ? 14'd0     : 
-                 am_final_signed[13:0];
+// ============================================================
+// 6. AM 调制算法逻辑（修复毛刺版）
+// ============================================================
+// 标准 AM：s(t) = [1 + m * x_m(t)] * x_c(t)
+// 定点化说明：
+//   carrier_signed = rom_data - 8192  (范围 [-8192, 8191])
+//   mod_signed     = mod_data - 8192  (范围 [-8192, 8191])
+//   depth          = mod_signed * ma / 100
+//   envelope       = 8192 + depth     (1.0 用 8192 表示)
+//   output_ac      = carrier_signed * envelope / 16384
+//   output         = output_ac + 8192 (转回单极性 DAC)
+// ------------------------------------------------------------
+// 修复点：
+// 1. /100 改为定点乘法 (*1311 >>> 17)，消除组合逻辑除法器毛刺
+// 2. >>> 14 替代 >>> 13，配合 envelope 上限钳制，避免过调制饱和削波
+// 3. envelope 增加上限 16383，任意调制度下均不溢出
+// 4. am_out 增加流水线寄存器，滤除组合逻辑毛刺
+// ------------------------------------------------------------
+assign carrier_signed = $signed({1'b0, rom_data}) - 15'sd8192;
+assign mod_signed     = $signed({1'b0, mod_data}) - 15'sd8192;
+
+// 调制深度分量：mod_signed * am_ma / 100，使用定点乘法消除除法器
+// 1/100 ≈ 1311 / 131072 (2^17)，误差 < 0.003%
+assign mod_depth_long = mod_signed * $signed({1'b0, am_ma});
+wire signed [34:0] mod_depth_mult = mod_depth_long * 32'sd1311;
+assign mod_depth      = mod_depth_mult >>> 17;
+
+// 包络：1.0 + depth，限制在 [128, 16383]
+// 下限 128 防止谷底完全消幅；上限 16383 防止过调制饱和
+wire signed [15:0] envelope_raw = 16'sd8192 + mod_depth;
+assign envelope = (envelope_raw < 16'sd128)   ? 16'sd128   :
+                  (envelope_raw > 16'sd16383) ? 16'sd16383 :
+                   envelope_raw;
+
+// 核心乘法
+assign am_mult = carrier_signed * envelope;
+
+// 除以 16384(2^14)，加 8192 做四舍五入
+assign am_scaled = (am_mult + 31'sd8192) >>> 14;
+
+// 加 8192 直流偏置
+assign am_final_signed = am_scaled + 16'sd8192;
+
+wire [13:0] am_comb = (am_final_signed > 16'sd16383) ? 14'd16383 :
+                      (am_final_signed < 16'sd0)     ? 14'd0     :
+                       am_final_signed[13:0];
+
+// 流水线寄存器：消除组合逻辑毛刺，延迟 1 个时钟周期
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) am_out <= 14'd8192;
+    else am_out <= am_comb;
+end
+
+// ============================================================
+// 6.5 方波生成逻辑 - DC偏移补偿版
+// ============================================================
+// 问题：模拟输出级（运放差分转单端/I-V转换）存在直流偏移，
+//       当 DAC 输出中点码 8192 时，示波器DC模式测得约 -125mV，
+//       导致方波正负半周不对称（+300mV / -550mV）。
+// 修复：在数字域叠加 DC 偏移补偿量 SQUARE_OFFSET，使输出中心对准 0V。
+//       实测偏置 -254mV，峰峰值 1638mV 对应 8192 LSB
+//       斜率 = 1638mV / 8192 LSB ≈ 0.2 mV/LSB
+//       需补偿 254mV → SQUARE_OFFSET ≈ 1270 LSB
+//       由于模拟级反相，增加码值会让电压更负，因此补偿方向取"减"
+// ------------------------------------------------------------
+localparam DUTY_STEP = 32'hFFFFFFFF / 32'd100;  // 约 42949672
+localparam SQUARE_LOW  = 14'd4096;   // 0b01_0000_0000_0000
+localparam SQUARE_MID  = 14'd8192;   // 0b10_0000_0000_0000
+localparam SQUARE_HIGH = 14'd12288;  // 0b11_0000_0000_0000
+localparam SQUARE_OFFSET = 14'd1270; // DC偏移补偿 (~254mV)
+
+reg [31:0] duty_threshold_reg;
+reg [13:0] square_raw;
+reg [13:0] square_prev;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        duty_threshold_reg <= DUTY_STEP * 32'd50;
+        square_raw         <= SQUARE_LOW;
+        square_prev        <= SQUARE_LOW;
+    end else begin
+        duty_threshold_reg <= DUTY_STEP * square_duty;
+        square_prev        <= square_raw;
+        square_raw         <= (phase < duty_threshold_reg) ? SQUARE_HIGH : SQUARE_LOW;
+    end
+end
+
+// 跳变检测 + 过渡码插入
+wire sq_rising  = (square_raw == SQUARE_HIGH) && (square_prev == SQUARE_LOW);
+wire sq_falling = (square_raw == SQUARE_LOW)  && (square_prev == SQUARE_HIGH);
+
+reg [13:0] square_out_reg;
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        square_out_reg <= SQUARE_LOW;
+    else if (sq_rising || sq_falling)
+        square_out_reg <= SQUARE_MID;  // 跳变时插入过渡电平
+    else
+        square_out_reg <= square_raw;  // 稳定时直接输出
+end
+
+assign square_out = square_out_reg;
 
 // ============================================================
 // 7. 最终输出切换 (核心逻辑：全开或全关回退原功能)
@@ -459,19 +618,22 @@ always @(*) begin
     else begin
         // 其他：执行原有功能
         if(switch) begin
-            dac_comb = rom_data; freq_target = 32'd1000; display_freq = 32'd1000;
+            dac_comb = sine_gain; freq_target = 32'd1000; display_freq = 32'd1000;
         end else begin
             case(work_mode)
-                3'd1: begin dac_comb = rom_data; freq_target = sine_freq; display_freq = sine_freq; end
-                3'd2: begin dac_comb = am_out;   freq_target = am_fc;     display_freq = am_fc;     end
-                3'd3: begin dac_comb = rom_data; freq_target = fm_fc;     display_freq = fm_fc;     end
-                default: begin dac_comb = rom_data; freq_target = sine_freq; display_freq = sine_freq; end
+                3'd1: begin dac_comb = sine_gain; freq_target = sine_freq;  display_freq = sine_freq;  end
+                3'd2: begin dac_comb = am_out;    freq_target = am_fc;      display_freq = am_fc;      end
+                3'd3: begin dac_comb = rom_data;  freq_target = fm_fc;      display_freq = fm_fc;      end
+                3'd4: begin dac_comb = rom_data;  freq_target = sweep_freq; display_freq = sweep_freq; end
+                3'd5: begin dac_comb = square_out; freq_target = sine_freq;  display_freq = sine_freq;  end
+                default: begin dac_comb = sine_gain; freq_target = sine_freq; display_freq = sine_freq; end
             endcase
         end
     end
 end
 
-assign sine_out = dac_comb;
+// 全局 DC 偏置补偿：模拟输出级存在约 -254mV 偏移，统一减 1270 LSB
+assign sine_out = (dac_comb > SQUARE_OFFSET) ? (dac_comb - SQUARE_OFFSET) : 14'd0;
 assign led = 1'b1;
 
 dac904_pll u_pll (.areset(1'b0), .inclk0(clk), .c0(out_dacclk), .locked(locked));
