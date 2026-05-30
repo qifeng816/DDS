@@ -417,7 +417,7 @@ UV4.exe DDS.uvprojx
 
 ---
 
-**Made with ❤️ by the DDS Team**
+**Made with ❤️ by the WHU DDS Team**
 
 *如果本项目对你有帮助，欢迎 Star ⭐ 支持！*
 
