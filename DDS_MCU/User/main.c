@@ -11,6 +11,16 @@
 uint32_t fm_deviation = 5000;   // FM default deviation 5kHz
 uint32_t fm_fc = 100000;        // FM default carrier 100kHz
 
+// 根据当前频率计算 sine 模式步进值
+// 100-999Hz: 10Hz; 1k-9.9kHz: 100Hz; 10k-99.9kHz: 1kHz; 100k-999.9kHz: 10kHz; 1M-10MHz: 100kHz
+uint32_t get_sine_step(uint32_t freq) {
+    if      (freq >= 1000000) return 100000;  // 1MHz ~ 10MHz: 100kHz step
+    else if (freq >= 100000)  return 10000;   // 100kHz ~ 1MHz: 10kHz step
+    else if (freq >= 10000)   return 1000;    // 10kHz ~ 100kHz: 1kHz step
+    else if (freq >= 1000)    return 100;     // 1kHz ~ 10kHz: 100Hz step
+    else                      return 10;      // 100Hz ~ 1kHz: 10Hz step
+}
+
 // Convert frequency to string and send to FPGA
 void UART_send_freq(uint32_t freq) {
     char str[12];
@@ -38,6 +48,15 @@ void UART_send_fm_params(uint32_t fc, uint32_t dev) {
     UART_send_freq(dev);
 }
 
+// Send Square wave params: 'E' resets FPGA idx_cnt, then send freq and duty
+void UART_send_square_params(uint32_t freq, uint32_t duty) {
+    DL_UART_transmitDataBlocking(UART_FPGA_INST, 'E');
+    delay_ms(20);
+    UART_send_freq(freq);
+    delay_ms(50);
+    UART_send_freq(duty);
+}
+
 void main_show(){
     OLED_ShowChar(0,0,'A');
     OLED_ShowChar(8,0,':');
@@ -50,7 +69,7 @@ void main_show(){
     OLED_ShowString(16,4,"FM signal");
     OLED_ShowChar(0,6,'D');
     OLED_ShowChar(8,6,':');
-    OLED_ShowString(16,6,"PSK/ASK signal");
+    OLED_ShowString(16,6,"Sweep signal");
 }
 
 void sine_wave_show(){
@@ -84,6 +103,25 @@ void PSK_ASK_show(){
     OLED_ShowString(0,0,"PSK/ASK signal");
 }
 
+void SWEEP_show(){
+    OLED_ShowString(0,0,"Sweep signal");
+    OLED_ShowString(0,2,"100Hz-10MHz");
+    OLED_ShowString(0,4,"Step:10%");
+}
+
+void square_show(){
+    //OLED_ShowString(0,0,"Square wave");
+    OLED_ShowChar(0,2,'A');
+    OLED_ShowChar(8,2,':');
+    OLED_ShowString(16,2,"Hz");
+    OLED_ShowChar(0,4,'B');
+    OLED_ShowChar(8,4,':');
+    OLED_ShowString(16,4,"kHz");
+    OLED_ShowChar(0,6,'C');
+    OLED_ShowChar(8,6,':');
+    OLED_ShowString(16,6,"MHz");
+}
+
 int main(void)
 {
     uint8_t key;
@@ -92,12 +130,17 @@ int main(void)
     uint32_t temp_freq = 0;
     int OLED_state = 0;
     char sine_unit = 'A';  // Sine wave display unit: A=Hz, B=kHz, C=MHz
+    uint8_t  square_duty = 50;  // Square wave duty cycle 0-100
 
     // AM params
     uint32_t am_fc = 1000000;
     uint8_t  am_ma = 10;
     char     am_freq_str[8] = {0};
     uint8_t  am_has_dot = 0;
+
+    // FM params
+    char     fm_freq_str[8] = {0};
+    uint8_t  fm_has_dot = 0;
 
     SYSCFG_DL_init();
     W25Q64_Init();
@@ -146,15 +189,31 @@ int main(void)
                         fm_fc = 100000;
                         fm_deviation = 5000;
                         temp_freq = 0;
+                        fm_freq_str[0] = '\0';
+                        fm_has_dot = 0;
                         FM_show();
                         UART_send_fm_params(fm_fc, fm_deviation);
                     }
                     else if(first_key == 'D')
                     {
                         OLED_Clear();
-                        OLED_state = 4;
-                        PSK_ASK_show();
+                        OLED_state = 5;
+                        SWEEP_show();
                     }
+                    delay_ms(50);
+                }
+                else if(first_key == '*')
+                {
+                    OLED_Clear();
+                    OLED_state = 6;
+                    uart_freq = 100;
+                    square_duty = 50;
+                    square_show();
+                    OLED_ShowNum(0,0,uart_freq,6,16);
+                    OLED_ShowString(54,0,"Hz ");
+                    //OLED_ShowNum(0,4,square_duty,3,16);
+                    //OLED_ShowString(48,4,"%  ");
+                    UART_send_square_params(uart_freq, 50);
                     delay_ms(50);
                 }
             }
@@ -187,7 +246,9 @@ int main(void)
                 }
                 else if(key == '*')
                 {
-                    uart_freq = uart_freq + 100;
+                    uint32_t step = get_sine_step(uart_freq);
+                    uart_freq = uart_freq + step;
+                    if(uart_freq > 10000000) uart_freq = 10000000; // 上限保护
                     OLED_ShowNum(0,0,uart_freq,6,16);
                     OLED_ShowString(54,0,"Hz ");
                     sine_unit = 'A';
@@ -195,7 +256,9 @@ int main(void)
                 }
                 else if(key == '#')
                 {
-                    if(uart_freq >= 100) uart_freq = uart_freq - 100;
+                    uint32_t step = get_sine_step(uart_freq);
+                    if(uart_freq > step) uart_freq = uart_freq - step;
+                    else uart_freq = 100; // 下限保护 100Hz
                     OLED_ShowNum(0,0,uart_freq,6,16);
                     OLED_ShowString(54,0,"Hz ");
                     sine_unit = 'A';
@@ -293,30 +356,43 @@ int main(void)
             {
                 if(key >= '0' && key <= '9')
                 {
-                    if(temp_freq < 10000000) {
-                        temp_freq = temp_freq * 10 + (key - '0');
-                        OLED_ShowString(24, 2, "           ");
-                        OLED_ShowNum(24, 2, temp_freq, 6, 16);
+                    uint8_t len = strlen(fm_freq_str);
+                    if(len < 6)
+                    {
+                        fm_freq_str[len] = key;
+                        fm_freq_str[len + 1] = '\0';
+                        OLED_ShowString(24, 2, "      ");
+                        OLED_ShowString(24, 2, fm_freq_str);
                     }
                 }
-                else if((temp_freq > 0) && (key == 'A' || key == 'B'||key == 'C'))
+                else if(key == 'A')
                 {
-                    switch(key)
-                    {
-                        case 'A': fm_fc = temp_freq; break;
-                        case 'B': fm_fc = temp_freq * 1000; break;
-											  case 'C': fm_fc = temp_freq * 1000000; break;
+                    uint8_t len = strlen(fm_freq_str);
+                    if(!fm_has_dot && len > 0 && len < 5) {
+                        fm_freq_str[len] = '.';
+                        fm_freq_str[len + 1] = '\0';
+                        fm_has_dot = 1;
+                        OLED_ShowString(24, 2, fm_freq_str);
                     }
-                    OLED_ShowString(24, 2, "           ");
-                    OLED_ShowNum(24, 2, temp_freq, 6, 16);
-                    switch(key)
-                    {
-                        case 'A': OLED_ShowString(72, 2, "Hz  "); break;
-                        case 'B': OLED_ShowString(72, 2, "kHz "); break;
-												case 'C': OLED_ShowString(72, 2, "MHz "); break;
+                }
+                else if(key == 'B' || key == 'C')
+                {
+                    if(strlen(fm_freq_str) > 0) {
+                        float f_val;
+                        sscanf(fm_freq_str, "%f", &f_val);
+                        if(key == 'B') {
+                            fm_fc = (uint32_t)(f_val * 1000);    // kHz -> Hz
+                            OLED_ShowString(72, 2, "kHz ");
+                        } else {
+                            fm_fc = (uint32_t)(f_val * 1000000); // MHz -> Hz
+                            OLED_ShowString(72, 2, "MHz ");
+                        }
+                        OLED_ShowString(24, 2, "      ");
+                        OLED_ShowNum(24, 2, fm_fc, 6, 16);
+                        UART_send_fm_params(fm_fc, fm_deviation);
+                        fm_freq_str[0] = '\0';
+                        fm_has_dot = 0;
                     }
-                    temp_freq = 0;
-                    UART_send_fm_params(fm_fc, fm_deviation);
                 }
                 else if(key == '*')
                 {
@@ -335,6 +411,54 @@ int main(void)
             }
         }
 
+        // ------------------ Square Wave (State 6) ------------------
+        else if(OLED_state == 6)
+        {
+						//OLED_Clear();
+            key = getKeyValue();
+            if(key != 'N')
+            {
+                if(key >= '0' && key <= '9')
+                {
+                    if(temp_freq < 10000000) {
+                        temp_freq = temp_freq * 10 + (key - '0');
+                        OLED_ShowNum(0,0,temp_freq,6,16);
+                    }
+                }
+                else if(key == 'A' || key == 'B' || key == 'C')
+                {
+                    OLED_ShowNum(0,0,temp_freq,6,16);
+                    switch(key)
+                    {
+                        case 'A': OLED_ShowString(54,0,"Hz     "); uart_freq = temp_freq; break;
+                        case 'B': OLED_ShowString(54,0,"kHz    "); uart_freq = temp_freq * 1000; break;
+                        case 'C': OLED_ShowString(54,0,"MHz    "); uart_freq = temp_freq * 1000000; break;
+                    }
+                    temp_freq = 0;
+                    UART_send_square_params(uart_freq, square_duty);
+                }
+                else if(key == '*')
+                {
+                    if(square_duty < 100) square_duty += 10;
+                    if(square_duty > 100) square_duty = 100;
+                    OLED_ShowNum(56,4,square_duty,3,16);
+                    OLED_ShowString(96,4,"%  ");
+                    UART_send_square_params(uart_freq, square_duty);
+                }
+                else if(key == '#')
+                {
+                    if(square_duty > 10) square_duty -= 10;
+                    else square_duty = 0;
+                    OLED_ShowNum(56,4,square_duty,3,16);
+                    OLED_ShowString(96,4,"%  ");
+                    UART_send_square_params(uart_freq, square_duty);
+                }
+
+                delay_ms(50);
+                while(getKeyValue() != 'N') delay_ms(10);
+            }
+        }
+
         // ------------------ Global exit logic ------------------
         if(OLED_state != 0)
         {
@@ -344,6 +468,8 @@ int main(void)
                 OLED_state = 0;
                 main_show();
                 temp_freq = 0;
+                fm_freq_str[0] = '\0';
+                fm_has_dot = 0;
                 delay_ms(50);
                 while(getKeyValue() != 'N') delay_ms(10);
             }

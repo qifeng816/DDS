@@ -1,7 +1,15 @@
 ../output/main.o: ..\User\main.c ..\User\ti_msp_dl_config.h \
   ..\Source\ti\devices\msp\msp.h ..\Source\ti\devices\DeviceFamily.h \
   ..\Source\ti\devices\msp\m0p\mspm0g351x.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\stdint.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\stdbool.h \
   ..\Source\third_party\CMSIS\Core\Include\core_cm0plus.h \
+  C:\Users\HUAWEI\Desktop\DDS-main\DDS-main\DDS_MCU\Source\third_party\CMSIS\Core\Include\cmsis_version.h \
+  C:\Users\HUAWEI\Desktop\DDS-main\DDS-main\DDS_MCU\Source\third_party\CMSIS\Core\Include\cmsis_compiler.h \
+  C:\Users\HUAWEI\Desktop\DDS-main\DDS-main\DDS_MCU\Source\third_party\CMSIS\Core\Include\cmsis_armclang.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\arm_compat.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\arm_acle.h \
+  C:\Users\HUAWEI\Desktop\DDS-main\DDS-main\DDS_MCU\Source\third_party\CMSIS\Core\Include\mpu_armv7.h \
   ..\Source\ti\devices\msp\peripherals\hw_adc12.h \
   ..\Source\ti\devices\msp\peripherals\hw_aesadv.h \
   ..\Source\ti\devices\msp\peripherals\hw_comp.h \
@@ -30,9 +38,11 @@
   ..\Source\ti\devices\msp\peripherals\m0p\hw_sysctl.h \
   ..\Source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0gx51x.h \
   ..\Source\ti\driverlib\driverlib.h ..\Source\ti\driverlib\dl_adc12.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\math.h \
   ..\Source\ti\driverlib\dl_common.h \
   ..\Source\ti\driverlib\m0p\dl_factoryregion.h \
   ..\Source\ti\driverlib\m0p\dl_core.h ..\Source\ti\driverlib\dl_aes.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\stddef.h \
   ..\Source\ti\driverlib\dl_aesadv.h ..\Source\ti\driverlib\dl_comp.h \
   ..\Source\ti\driverlib\dl_crc.h ..\Source\ti\driverlib\dl_crcp.h \
   ..\Source\ti\driverlib\dl_dac12.h ..\Source\ti\driverlib\dl_dma.h \
@@ -63,6 +73,8 @@
   ..\Source\ti\driverlib\dl_unicommuart.h \
   ..\Source\ti\driverlib\dl_vref.h ..\Source\ti\driverlib\dl_wwdt.h \
   ..\Source\ti\driverlib\m0p\dl_interrupt.h \
-  ..\Source\ti\driverlib\m0p\dl_systick.h ..\BSP\bsp.h ..\BSP\Keyboard.h \
+  ..\Source\ti\driverlib\m0p\dl_systick.h ..\BSP\bsp.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\stdio.h \
+  D:\AAAAPP\Keil\ARM\ARMCLANG\include\string.h ..\BSP\Keyboard.h \
   ..\BSP\oled_spi_V0.2.h ..\User\delay.h ..\BSP\oledpicture_V0.2.h \
   ..\BSP\w25q64_spi.h

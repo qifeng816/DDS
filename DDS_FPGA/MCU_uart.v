@@ -4,7 +4,8 @@ module MCU_uart(
     input              uart_rx,
     output reg [31:0]  data_out,   // 输出解析后的数值（频率或调制度）
     output reg         data_valid, // 数值有效脉冲
-    output reg [1:0]   data_idx, 
+    output reg [1:0]   data_idx,
+    output reg [2:0]   dot_cnt,    // 新增：小数点后位数
 	 output reg [2:0]   mode_sel,   // 模式选择：A=1, B=2, C=3, D=4
     output reg         mode_valid  // 模式切换有效脉冲
 );
@@ -51,30 +52,42 @@ end
 // ================== 2. 协议解析逻辑 ==================
 reg [31:0] freq_temp;
 reg [1:0]  idx_cnt;
+reg [2:0]  dot_cnt_temp;
+reg        dot_flag;
 
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         freq_temp <= 0; data_out <= 0; data_valid <= 0;
         mode_sel <= 0; mode_valid <= 0; idx_cnt <= 0;
+        dot_cnt_temp <= 0; dot_flag <= 0; dot_cnt <= 0;
     end else begin
         data_valid <= 0;
         mode_valid <= 0;
         if(rx_done_sig) begin
-            if(rx_data_reg >= "A" && rx_data_reg <= "D") begin
+            if(rx_data_reg >= "A" && rx_data_reg <= "E") begin
                 mode_sel   <= (rx_data_reg == "A") ? 3'd1 :
                               (rx_data_reg == "B") ? 3'd2 :
-                              (rx_data_reg == "C") ? 3'd3 : 3'd4;
+                              (rx_data_reg == "C") ? 3'd3 :
+                              (rx_data_reg == "D") ? 3'd4 : 3'd5;
                 mode_valid <= 1'b1;
                 idx_cnt    <= 0;    // 切换模式时，重置参数计数器
                 freq_temp  <= 0;
+                dot_cnt_temp <= 0; dot_flag <= 0;
             end else if(rx_data_reg >= "0" && rx_data_reg <= "9") begin
                 freq_temp <= freq_temp * 10 + (rx_data_reg - "0");
+                if(dot_flag)
+                    dot_cnt_temp <= dot_cnt_temp + 1'b1;
+            end else if(rx_data_reg == "." || rx_data_reg == 8'h2E) begin
+                dot_flag <= 1'b1;
             end else if(rx_data_reg == 8'h0A) begin // 收到回车
                 data_out   <= freq_temp;
                 data_valid <= 1'b1;
+                dot_cnt    <= dot_cnt_temp;
                 data_idx   <= idx_cnt;
                 idx_cnt    <= idx_cnt + 1'b1; // 参数序号递增
                 freq_temp  <= 0;
+                dot_cnt_temp <= 0;
+                dot_flag     <= 0;
             end
         end
     end
